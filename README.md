@@ -14,7 +14,7 @@
 <!-- APPS:START -->
 | App | 标识 | 最新版本 | 大小 | 下载 |
 | --- | --- | --- | --- | --- |
-| _暂无_ | | | | |
+| **滚动提示器** | `scrollprompter` | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
 <!-- APPS:END -->
 
 > 表格由 `tools/publish.py` 自动维护，不用手改。
