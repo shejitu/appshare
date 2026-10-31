@@ -15,6 +15,7 @@
 | App | 标识 | 渠道 | 最新版本 | 大小 | 下载 |
 | --- | --- | --- | --- | --- | --- |
 | **慕思浏览器** | `musi` | 对外 | v1.2.1 (10201) | 2.84 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v1.2.1/musi-v1.2.1.apk) |
+| **慕思浏览器（内测）** | `musi-beta` | 内测 | vA.1.0 (100100) | 2.84 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-beta-vA.1.0/musi-beta-vA.1.0.apk) |
 | **滚动提示器** | `scrollprompter` | 对外 | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
 | **予知影视** | `yuzhi` | 对外 | v1.0.0 (10000) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk) |
 <!-- APPS:END -->
@@ -111,47 +112,53 @@ python tools/publish.py \
 
 ---
 
-## 版本号规则：1.x 对外，9.x 内测
+## 版本号规则：1.x 对外，A.x 内测
 
-两个通道，**主版本号第一位就是身份标记**，一眼能看出这条包是给客户的还是自己调的：
+两个通道，**版本号第一位就是身份标记**，一眼能看出这条包是给客户的还是自己调的：
 
 | 通道 | appId | 版本号 | 用途 |
 | --- | --- | --- | --- |
 | 对外 | `yuzhi` / `musi` | **1**.0.0 起 | 发给客户的正式版 |
-| 内测 | `yuzhi-beta` / `musi-beta` | **9**.0.0 起 | 自己验功能用，客户不会收到提示 |
+| 内测 | `yuzhi-beta` / `musi-beta` | **A**.0.0 起 | 自己验功能用，客户不会收到提示 |
+
+> 内测前缀早期用过数字 **9**，已经作废。数字容易和正式版看混，现在统一用字母 **A**。
 
 递增规则（两条线各自独立计算）：
 
 | 改动程度 | 命令 | 版本变化 |
 | --- | --- | --- |
-| 小改动 / 修 bug | `--bump small` | 1.0.0 → 1.0.1 → 1.0.2 … |
-| 中等改动 / 加功能 | `--bump medium` | 1.0.3 → 1.1.0 |
-| 大改版 / 重构 | `--bump major` | 1.4.7 → 2.0.0 |
+| 小改动 / 修 bug | `--bump small` | 1.0.0 → 1.0.1；A.1.0 → A.1.1 |
+| 中等改动 / 加功能 | `--bump medium` | 1.0.3 → 1.1.0；A.1.3 → A.2.0 |
+| 大改版 / 重构 | `--bump major` | 1.4.7 → 2.0.0（内测线没有大版本，见下） |
 
 `versionCode` 自动换算，**不要手填**：
 
 ```
-versionCode = major × 10000 + minor × 100 + patch
+versionCode = major × 10000 + minor × 100 + patch    （A 记作 major = 10）
     1.0.0 → 10000     1.0.1 → 10001     1.1.0 → 10100     2.0.0 → 20000
-    9.0.0 → 90000     9.0.1 → 90001     9.1.0 → 90100
+    A.0.0 → 100000    A.0.1 → 100001    A.1.0 → 100100
 ```
+
+内测线的 `A` 只是渠道标记，不参与大版本递增 —— `--bump major` 在 A 线上会直接报错。
+对外做大改版时，内测用 `--version A.<对外 minor>.0` 手工跟上即可（例如对外 2.0.0 → 内测 A.2.0）。
 
 脚本会拦两种事故：
 
-- **9.x 内测包想发进对外通道** → 直接中止（否则所有客户都会被提示升到测试版）；
+- **A.x 内测包想发进对外通道** → 直接中止（否则所有客户都会被提示升到测试版）；
 - **APK 里真实打包的 versionName/versionCode 与 `--version` 不符** → 直接中止（否则客户端会「永远提示更新」或「永远收不到更新」）。
 
 ```bash
 # 对外首发
 python tools/publish.py --app-id yuzhi --name 予知影视 --version 1.0.0 --apk "YuzhiTV-1.0.0.apk"
 # 内测首发（客户端读的是另一条线，客户完全看不到）
-python tools/publish.py --app-id yuzhi-beta --name "予知影视（内测）" --version 9.0.0 --apk "YuzhiTV-9.0.0.apk"
+python tools/publish.py --app-id yuzhi-beta --name "予知影视（内测）" --version A.0.0 --apk "YuzhiTV-A.0.0.apk"
 # 之后只管改动大小，版本号交给脚本
 python tools/publish.py --app-id yuzhi --bump small --apk "..."
 ```
 
-> **内测机切回对外版要先卸载**：9.0.5 的 versionCode 是 90005，大于对外 1.0.6 的 10006，
-> 安卓不允许降级覆盖。这是「9 开头 = 内测」的必然代价，测试机要装公用包时先卸载旧版。
+> **内测机切回对外版要先卸载**：A.1.0 的 versionCode 是 100100，大于对外 1.2.1 的 10201，
+> 安卓不允许降级覆盖。这是「内测线 code 恒大于对外线」的必然代价，测试机要装公用包时先卸载旧版。
+> 反过来「对外装完再装内测」是可以直接覆盖的。
 
 ---
 
