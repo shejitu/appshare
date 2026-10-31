@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T03:31:27Z",
+  "updatedAt": "2026-10-31T03:54:58Z",
   "apps": [
     {
       "appId": "musi",
@@ -19,6 +19,24 @@
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
       "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.1/musi-v1.2.1.apk",
       "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.1"
+    },
+    {
+      "appId": "musi-beta",
+      "channel": "beta",
+      "name": "慕思浏览器（内测）",
+      "versionName": "A.1.0",
+      "versionCode": 100100,
+      "publishedAt": "2026-10-31T03:54:58Z",
+      "mandatory": false,
+      "minSdk": 21,
+      "packageName": "com.mytv.lite",
+      "notes": "内测线首发：版本号前缀由 9 改为 A（A.1.0 = 原 9.1.0，versionCode 100100）。含连续剧场三榜、赞赏作者；本包不加固，供验收。客户端会读 musi-beta 通道，客户看不到这条线。",
+      "size": 2976969,
+      "sha256": "06949631547e2088e593c61eb7bec5441bb779851c6f4a8d7e86ba6ab9e4a6da",
+      "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
+      "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.1.0/musi-beta-vA.1.0.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.1.0"
     },
     {
       "appId": "scrollprompter",
