@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T01:55:58Z",
+  "updatedAt": "2026-10-31T03:18:12Z",
   "apps": [
     {
       "appId": "musi",
       "channel": "stable",
       "name": "慕思浏览器",
-      "versionName": "1.0.0",
-      "versionCode": 10000,
-      "publishedAt": "2026-10-31T01:50:19Z",
+      "versionName": "1.2.0",
+      "versionCode": 10200,
+      "publishedAt": "2026-10-31T03:18:12Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "统一版本号重新起算；对外正式版从此按 1.x.x 迭代（内测走 9.x.x 单独一条线）",
-      "size": 2971341,
-      "sha256": "b3746851437dd75e799472f778ef86cfd887e6bbba447fa797f24285e0dde188",
+      "notes": "1. 「赞赏」改为「赞赏作者」；2. 新增「连续剧场」（位于搜索之后、直播之前）：国产剧 / 海外剧 双榜 × 热播 / 高分 切换，另加 AI 短剧榜（红牛源）；3. 对外包启用 BLA 加固 + 运行时签名校验（防破解、防二次打包）",
+      "size": 2641673,
+      "sha256": "068514fe02e0e874bd561058926464a0e9839f96fd908ae7a2d736cff0eab28e",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.0.0/musi-v1.0.0.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.0.0"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.0/musi-v1.2.0.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.0"
     },
     {
       "appId": "scrollprompter",
