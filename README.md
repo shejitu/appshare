@@ -14,13 +14,34 @@
 <!-- APPS:START -->
 | App | 标识 | 渠道 | 最新版本 | 大小 | 下载 |
 | --- | --- | --- | --- | --- | --- |
-| **慕思浏览器** | `musi` | 对外 | v1.2.1 (10201) | 2.84 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v1.2.1/musi-v1.2.1.apk) |
+| **慕思浏览器** | `musi` | 对外 | v1.3.0 (10300) | 2.84 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v1.3.0/musi-v1.3.0.apk) |
 | **慕思浏览器（内测）** | `musi-beta` | 内测 | vA.1.0 (100100) | 2.84 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-beta-vA.1.0/musi-beta-vA.1.0.apk) |
 | **滚动提示器** | `scrollprompter` | 对外 | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
 | **予知影视** | `yuzhi` | 对外 | v1.0.0 (10000) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk) |
 <!-- APPS:END -->
 
 > 表格由 `tools/publish.py` 自动维护，不用手改。
+
+### 体验期说明
+
+慕思浏览器**对外版**（`musi`）是限期体验版：**有效期至 2026-12-31（北京时间）**。
+到期后不能点播，会提示「体验版本到期，需要新版本请联系微信：shejitu」，点确定后自动退出。
+
+内测通道（`musi-beta`）供本人验收使用，**不受时间限制**；客户不需要、也不应该拿这条线的包。
+
+> 判断是否到期不只看手机本地时间：App 会取一次网络时间做基准，并用开机计时推进，
+> 把系统日期往前调绕不过去。到期判定按北京时间算，改时区同样无效。
+
+### 本版内容范围（1.3.0 起）
+
+对外版按授权要求收窄了两块内容，**不是故障**：
+
+- **直播只提供央视频道**（CCTV / CGTN / 央视 / 中央电视）。频道列表里不会再出现卫视、
+  地方台、港澳台与境外台；换源后若该源没有央视频道，会直接提示「该源没有央视频道」。
+- **「其他仓库」已关闭**：首页顶栏不再有「仓库」按钮，第二行的「📦 其他仓库」点下去只提示
+  「限制内容」。豆瓣榜单、连续剧场、搜索、分类这些发现与点播入口不受影响。
+
+内测通道（`musi-beta`）同样只有央视频道与关闭的仓库入口，但**没有时间限制**。
 
 ---
 
