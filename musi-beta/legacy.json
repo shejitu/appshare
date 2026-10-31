@@ -1,8 +1,8 @@
 {
-  "version": "A.7.0",
-  "code": 100700,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.7.0",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.7.0/musi-beta-vA.7.0.apk",
-  "size": 2981749,
-  "notes": "内测 A.7.0（同源码、不加固）：\n· 内容全量：直播保留全部频道（含卫视/港澳台/国际新闻），顶栏入口与「其他仓库」菜单照旧可用；\n· 无体验期限制；\n· 播放手势（长按 3 倍进退 / 双击暂停 / 上下调亮度）、控制条限高 1/6 屏、返回点播按钮、横屏默认适应、点播标签改「推荐影视」，均与对外版一致；\n· 设置里「体验授权」入口保留，内测线本身不受限。"
+  "version": "A.8.0",
+  "code": 100800,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.8.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.8.0/musi-beta-vA.8.0.apk",
+  "size": 2981724,
+  "notes": "内测 A.8.0（同源码、不加固）：\n· 内容全量：直播保留全部频道（含卫视/港澳台/国际新闻），顶栏入口与「其他仓库」菜单照旧可用；\n· 无体验期限制；\n· 播放手感三条修复与对外版一致：长按一次跳 2 分钟（原 3 倍速等于没生效）、取消双击暂停（触碰只弹控制条）、控制条在 1/6 区域内一屏全显；\n· 设置里「体验授权」入口保留，内测线本身不受限。"
 }
