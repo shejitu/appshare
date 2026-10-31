@@ -5,7 +5,7 @@
   "name": "慕思浏览器",
   "versionName": "A.8.0",
   "versionCode": 100800,
-  "publishedAt": "2026-10-31T13:39:05Z",
+  "publishedAt": "2026-10-31T13:47:37Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
@@ -13,7 +13,7 @@
   "apk": {
     "file": "musi-beta-vA.8.0.apk",
     "size": 2981724,
-    "sha256": "7c2e79b730f9a6f24b50d19f44b68b3d0e19a28547cc68689602b769898298b7",
+    "sha256": "19acbafc6bc92f14b0f2e399b28165d85386c5344617c6f883e3ac0ca026fda2",
     "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.8.0/musi-beta-vA.8.0.apk",
     "mirrors": [
       "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.8.0/musi-beta-vA.8.0.apk",
