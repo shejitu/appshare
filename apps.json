@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T03:18:12Z",
+  "updatedAt": "2026-10-31T03:31:27Z",
   "apps": [
     {
       "appId": "musi",
       "channel": "stable",
       "name": "慕思浏览器",
-      "versionName": "1.2.0",
-      "versionCode": 10200,
-      "publishedAt": "2026-10-31T03:18:12Z",
+      "versionName": "1.2.1",
+      "versionCode": 10201,
+      "publishedAt": "2026-10-31T03:31:27Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "1. 「赞赏」改为「赞赏作者」；2. 新增「连续剧场」（位于搜索之后、直播之前）：国产剧 / 海外剧 双榜 × 热播 / 高分 切换，另加 AI 短剧榜（红牛源）；3. 对外包启用 BLA 加固 + 运行时签名校验（防破解、防二次打包）",
-      "size": 2641673,
-      "sha256": "068514fe02e0e874bd561058926464a0e9839f96fd908ae7a2d736cff0eab28e",
+      "notes": "修复：加固后 resources.arsc 被压缩，导致部分手机安装报 -124。1.2.0 的连续剧场（国产剧/海外剧/AI短剧三榜、热播/高分切换）与「赞赏作者」均包含在内。安装前请先卸载内测版 9.x（内测 versionCode 更大，覆盖安装会被判为降级）。",
+      "size": 2977545,
+      "sha256": "5b008ca8c0bafd6f93f07fd82762949c09d731aa58c0b259b8f6007cb2c4d57d",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.0/musi-v1.2.0.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.0"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.1/musi-v1.2.1.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.1"
     },
     {
       "appId": "scrollprompter",
