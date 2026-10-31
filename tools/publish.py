@@ -39,6 +39,7 @@ import hashlib
 import json
 import mimetypes
 import os
+import struct
 import sys
 import time
 import urllib.error
@@ -210,6 +211,7 @@ def build_version_json(args, apk_name, size, sha256, download_url, published_at)
     doc = {
         "schemaVersion": 1,
         "appId": args.app_id,
+        "channel": channel_of(parse_version(args.version)),
         "name": args.name,
         "versionName": args.version,
         "versionCode": int(args.version_code),
@@ -246,6 +248,7 @@ def build_legacy_json(doc):
 def build_index_entry(app_id, doc):
     return {
         "appId": app_id,
+        "channel": doc.get("channel", "stable"),
         "name": doc["name"],
         "versionName": doc["versionName"],
         "versionCode": doc["versionCode"],
@@ -293,13 +296,15 @@ def update_readme(index, token, dry_run=False):
         print("  ! README.md 缺少 APPS 标记区，跳过表格更新")
         return None
 
-    rows = ["| App | 标识 | 最新版本 | 大小 | 下载 |", "| --- | --- | --- | --- | --- |"]
+    rows = ["| App | 标识 | 渠道 | 最新版本 | 大小 | 下载 |",
+            "| --- | --- | --- | --- | --- | --- |"]
     for a in index["apps"]:
         size = a["size"] / 1048576.0
-        rows.append("| **%s** | `%s` | v%s (%s) | %.2f MiB | [下载](%s) |" % (
-            a["name"], a["appId"], a["versionName"], a["versionCode"], size, a["apkUrl"]))
+        ch_label = "内测" if a.get("channel") == "beta" else "对外"
+        rows.append("| **%s** | `%s` | %s | v%s (%s) | %.2f MiB | [下载](%s) |" % (
+            a["name"], a["appId"], ch_label, a["versionName"], a["versionCode"], size, a["apkUrl"]))
     if not index["apps"]:
-        rows.append("| _暂无_ | | | | |")
+        rows.append("| _暂无_ | | | | | |")
 
     block = "\n".join(rows)
     start = text.index(APPS_START) + len(APPS_START)
@@ -317,6 +322,68 @@ def update_readme(index, token, dry_run=False):
 # --------------------------------------------------------------------------
 # 校验与命令
 # --------------------------------------------------------------------------
+def _axml_manifest(data):
+    """解析 AndroidManifest.xml（二进制 XML），返回 manifest + uses-sdk 的属性字典。"""
+    def string_pool(off):
+        hsize = struct.unpack_from("<H", data, off + 2)[0]
+        count, _, flags, str_start, _ = struct.unpack_from("<IIIII", data, off + 8)
+        utf8 = bool(flags & (1 << 8))
+        offsets = struct.unpack_from("<%dI" % count, data, off + hsize)
+        base, out = off + str_start, []
+        for o in offsets:
+            p = base + o
+            if utf8:
+                p += 2 if data[p] & 0x80 else 1
+                n = data[p]
+                if n & 0x80:
+                    n, p = ((n & 0x7F) << 8) | data[p + 1], p + 2
+                else:
+                    p += 1
+                out.append(data[p:p + n].decode("utf-8", "replace"))
+            else:
+                n = struct.unpack_from("<H", data, p)[0]
+                p += 2
+                if n & 0x8000:
+                    n, p = ((n & 0x7FFF) << 16) | struct.unpack_from("<H", data, p)[0], p + 2
+                out.append(data[p:p + n * 2].decode("utf-16-le", "replace"))
+        return out
+
+    strings, found, off = [], {}, 8
+    while off < len(data) - 8:
+        typ, _, size = struct.unpack_from("<HHI", data, off)
+        if size == 0:
+            break
+        if typ == 0x0001:
+            strings = string_pool(off)
+        elif typ == 0x0102 and strings:      # START_ELEMENT
+            name_i = struct.unpack_from("<I", data, off + 20)[0]
+            attr_start, attr_size, attr_count = struct.unpack_from("<HHH", data, off + 24)
+            if name_i < len(strings) and strings[name_i] in ("manifest", "uses-sdk"):
+                p = off + 16 + attr_start
+                for _ in range(attr_count):
+                    _, a_name, a_raw, _, _, a_type, a_data = struct.unpack_from("<IIIHBBI", data, p)
+                    nm = strings[a_name] if a_name < len(strings) else ""
+                    if a_type == 0x03:                 # TYPE_STRING
+                        found[nm] = strings[a_data]
+                    elif a_type in (0x10, 0x11, 0x12):  # INT_DEC / HEX / BOOL
+                        found[nm] = a_data
+                    elif a_raw != 0xFFFFFFFF:
+                        found[nm] = strings[a_raw]
+                    p += attr_size
+                if "package" in found:
+                    break
+        off += size
+    return found
+
+
+def read_apk_manifest(path):
+    """返回 APK 里真实打包的 (packageName, versionName, versionCode, minSdk)。"""
+    with zipfile.ZipFile(path) as z:
+        attrs = _axml_manifest(z.read("AndroidManifest.xml"))
+    return (attrs.get("package"), attrs.get("versionName"),
+            attrs.get("versionCode"), attrs.get("minSdkVersion"))
+
+
 def sanity_check_apk(path):
     if not os.path.isfile(path):
         raise SystemExit("APK 不存在：%s" % path)
@@ -328,6 +395,68 @@ def sanity_check_apk(path):
         names = set(z.namelist())
     if "AndroidManifest.xml" not in names:
         raise SystemExit("缺 AndroidManifest.xml，不像 APK：%s" % path)
+
+
+# --------------------------------------------------------------------------
+# 版本号规则
+#   1.0.0 起步；小改动 +0.0.1；中等改动 +0.1.0（patch 归零）；大改版 +1.0.0（minor/patch 归零）
+#   versionCode = major*10000 + minor*100 + patch
+#     1.0.0 -> 10000   1.0.1 -> 10001   1.1.0 -> 10100   2.0.0 -> 20000
+# --------------------------------------------------------------------------
+CHANNEL_BY_MAJOR = {1: "stable", 9: "beta"}
+
+
+def parse_version(text):
+    """X.Y.Z（三段）或 X.Y（两段，老项目）都接受，统一成三段。"""
+    parts = str(text).strip().split(".")
+    if len(parts) not in (2, 3) or not all(p.isdigit() for p in parts):
+        raise SystemExit("版本号要写成 X.Y.Z，例如 1.0.0（收到：%s）" % text)
+    while len(parts) < 3:
+        parts.append("0")
+    return tuple(int(p) for p in parts)
+
+
+def channel_of(v):
+    """1 开头 = 对外正式版，9 开头 = 自己内测用。"""
+    return CHANNEL_BY_MAJOR.get(v[0], "other")
+
+
+def version_code_for(v):
+    return v[0] * 10000 + v[1] * 100 + v[2]
+
+
+def bump_version(v, kind):
+    major, minor, patch = v
+    if kind == "small":
+        patch += 1
+        if patch > 99:            # 0.0.99 之后进位，避免和 0.1.0 撞 code
+            patch, minor = 0, minor + 1
+    elif kind == "medium":
+        minor, patch = minor + 1, 0
+    elif kind == "major":
+        major, minor, patch = major + 1, 0, 0
+    else:
+        raise SystemExit("--bump 只能是 small / medium / major")
+    return (major, minor, patch)
+
+
+def current_version(app_id, token):
+    """优先取远端 <appId>/version.json，其次取本地副本。"""
+    doc = None
+    try:
+        text, _ = get_file("%s/version.json" % app_id, token)
+        if text:
+            doc = json.loads(text)
+    except SystemExit:
+        doc = None
+    if doc is None:
+        local = os.path.join(REPO_ROOT, app_id, "version.json")
+        if os.path.isfile(local):
+            with open(local, encoding="utf-8") as fh:
+                doc = json.load(fh)
+    if not doc:
+        return None
+    return parse_version(doc["versionName"])
 
 
 def cmd_list(token):
@@ -347,8 +476,10 @@ def main():
     p = argparse.ArgumentParser(description="发布 APK 到 appshare 公开仓库")
     p.add_argument("--app-id", help="英文小写标识，如 scrollprompter（目录名）")
     p.add_argument("--name", help="显示名称，如 滚动提示器")
-    p.add_argument("--version", help="versionName，如 1.9")
-    p.add_argument("--version-code", help="versionCode 整数，客户端靠它比较大小")
+    p.add_argument("--version", help="versionName，X.Y.Z，如 1.0.0")
+    p.add_argument("--bump", choices=["small", "medium", "major"],
+                   help="按规则自动递增版本号（读现有 version.json）：small=+0.0.1 / medium=+0.1.0 / major=+1.0.0")
+    p.add_argument("--version-code", help="一般不用填，由 versionName 自动换算")
     p.add_argument("--apk", help="本地 APK 路径")
     p.add_argument("--notes", default="", help="更新说明，\\n 换行")
     p.add_argument("--notes-file", help="从文件读取更新说明（优先于 --notes）")
@@ -358,6 +489,7 @@ def main():
     p.add_argument("--mirror", action="append", help="额外的下载镜像前缀，可重复")
     p.add_argument("--token-file", default=DEFAULT_TOKEN_FILE)
     p.add_argument("--dry-run", action="store_true", help="只打印，不写远端")
+    p.add_argument("--force", action="store_true", help="APK 内版本与参数不一致时仍然发布（一般别用）")
     p.add_argument("--list", action="store_true", help="列出仓库里已有的 app")
     args = p.parse_args()
 
@@ -372,9 +504,39 @@ def main():
         cmd_list(token)
         return
 
+    # ---- 版本号：--bump 自动递增，或 --version 直接给，versionCode 一律自动换算 ----
+    if args.bump:
+        if not args.app_id:
+            raise SystemExit("--bump 需要同时给 --app-id")
+        cur = current_version(args.app_id, token)
+        if cur is None:
+            raise SystemExit("仓库里还没有 %s 的版本记录，首次请用 --version 1.0.0" % args.app_id)
+        new = bump_version(cur, args.bump)
+        args.version = "%d.%d.%d" % new
+        print("版本递增（%s）：%d.%d.%d → %s" % (args.bump, cur[0], cur[1], cur[2], args.version))
+    if args.version and not args.version_code:
+        if len(str(args.version).split(".")) == 3:
+            args.version_code = str(version_code_for(parse_version(args.version)))
+        else:
+            raise SystemExit("--version %s 不是三段式，请显式给 --version-code" % args.version)
+
+    if args.bump and not args.apk:
+        print("下个版本：v%s (versionCode=%s)，未提供 --apk，仅预览。" % (args.version, args.version_code))
+        return
+
     for field in ("app_id", "name", "version", "version_code", "apk"):
         if not getattr(args, field):
             raise SystemExit("缺少参数 --%s" % field.replace("_", "-"))
+    # 渠道与 appId 必须一致：9 开头的内测版不许发到对外通道，反之亦然
+    ch = channel_of(parse_version(args.version))
+    if ch == "beta" and not str(args.app_id).endswith("-beta"):
+        print("\n这是 9.x 内测版，但 appId 是 %s。" % args.app_id)
+        print("内测请用对应通道：--app-id %s-beta" % args.app_id)
+        raise SystemExit("已中止：内测版不能进对外通道，否则所有客户都会被提示升级。")
+    if ch == "stable" and str(args.app_id).endswith("-beta"):
+        raise SystemExit("已中止：%-beta 通道只能发 9.x 内测版（收到 %s）。" % (args.version))
+    if ch == "other":
+        print("  ! 版本号 %s 既不是 1.x（对外）也不是 9.x（内测），渠道记为 other" % args.version)
     if not str(args.app_id).replace("-", "").isalnum() or str(args.app_id).lower() != args.app_id:
         raise SystemExit("--app-id 只能用 a-z0-9-_，且必须小写")
     if args.notes_file:
@@ -383,6 +545,26 @@ def main():
     args.notes = (args.notes or "").replace("\\n", "\n")
 
     sanity_check_apk(args.apk)
+    pkg, apk_vname, apk_vcode, _ = read_apk_manifest(args.apk)
+    problems = []
+    if str(apk_vname) != str(args.version):
+        problems.append("versionName：包内是 %s，元数据要写 %s" % (apk_vname, args.version))
+    if str(apk_vcode) != str(args.version_code):
+        problems.append("versionCode：包内是 %s，元数据要写 %s" % (apk_vcode, args.version_code))
+    if args.package_name and pkg and pkg != args.package_name:
+        problems.append("包名：包内是 %s，参数写 %s" % (pkg, args.package_name))
+    if problems:
+        print("\nAPK 与要发布的版本对不上：")
+        for x in problems:
+            print("  - " + x)
+        print("\n客户端就是靠这两个数判断更新，不一致会导致「永远提示更新」或「永远收不到更新」。")
+        print("请改 build.gradle 里的 versionName / versionCode 重新打包（两者要和 --version 一致）。")
+        if not args.force:
+            raise SystemExit("已中止。确实要强推请加 --force。")
+        print("  （已按 --force 继续）")
+    if not args.package_name:
+        args.package_name = pkg
+        print("  包名  : %s（取自 APK）" % pkg)
     size = os.path.getsize(args.apk)
     sha = file_sha256(args.apk)
     published_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
@@ -394,6 +576,16 @@ def main():
     print("  大小  : %.2f MiB" % (size / 1048576.0))
     print("  sha256: %s" % sha)
     print("  tag   : %s" % tag)
+
+    # 安卓不接受 versionCode 回退，提前提醒
+    try:
+        prev = current_version(args.app_id, token)
+    except SystemExit:
+        prev = None
+    if prev is not None and int(args.version_code) <= version_code_for(prev):
+        print("  ! 新 versionCode %s 不大于上一版 %s（%d.%d.%d → %d），安卓会拒绝覆盖安装"
+              % (args.version_code, "%d.%d.%d" % prev, prev[0], prev[1], prev[2],
+                 version_code_for(prev)))
 
     # 先算好下载地址（Releases 资产的 URL 规则是确定的）
     download_url = "https://github.com/%s/%s/releases/download/%s/%s" % (
