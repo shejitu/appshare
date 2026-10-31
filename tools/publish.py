@@ -290,8 +290,16 @@ def update_index(app_id, entry, token, dry_run=False):
 
 
 def update_readme(index, token, dry_run=False):
-    """重写 README 里 APPS:START/END 之间的表格。"""
+    """重写 README 里 APPS:START/END 之间的表格。
+
+    以**本地** README 为基准（本地才是正在编辑的那份），远端只用来取 sha。
+    否则本地刚写的段落会被远端的旧版本覆盖掉。
+    """
     text, sha = get_file("README.md", token)
+    local = os.path.join(REPO_ROOT, "README.md")
+    if os.path.isfile(local):
+        with open(local, encoding="utf-8") as fh:
+            text = fh.read()
     if not text or APPS_START not in text or APPS_END not in text:
         print("  ! README.md 缺少 APPS 标记区，跳过表格更新")
         return None
