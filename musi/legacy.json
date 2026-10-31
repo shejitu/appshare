@@ -1,8 +1,8 @@
 {
-  "version": "1.2.0",
-  "code": 10200,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.0",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.0/musi-v1.2.0.apk",
-  "size": 2641673,
-  "notes": "1. 「赞赏」改为「赞赏作者」；2. 新增「连续剧场」（位于搜索之后、直播之前）：国产剧 / 海外剧 双榜 × 热播 / 高分 切换，另加 AI 短剧榜（红牛源）；3. 对外包启用 BLA 加固 + 运行时签名校验（防破解、防二次打包）"
+  "version": "1.2.1",
+  "code": 10201,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.1",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.1/musi-v1.2.1.apk",
+  "size": 2977545,
+  "notes": "修复：加固后 resources.arsc 被压缩，导致部分手机安装报 -124。1.2.0 的连续剧场（国产剧/海外剧/AI短剧三榜、热播/高分切换）与「赞赏作者」均包含在内。安装前请先卸载内测版 9.x（内测 versionCode 更大，覆盖安装会被判为降级）。"
 }
