@@ -1,8 +1,8 @@
 {
-  "version": "A.8.0",
-  "code": 100800,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.8.0",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.8.0/musi-beta-vA.8.0.apk",
-  "size": 2981724,
-  "notes": "内测 A.8.0（同源码、不加固）：\n· 内容全量：直播保留全部频道（含卫视/港澳台/国际新闻），顶栏入口与「其他仓库」菜单照旧可用；\n· 无体验期限制；\n· 播放手感三条修复与对外版一致：长按一次跳 2 分钟（原 3 倍速等于没生效）、取消双击暂停（触碰只弹控制条）、控制条在 1/6 区域内一屏全显；\n· 设置里「体验授权」入口保留，内测线本身不受限。"
+  "version": "A.9.0",
+  "code": 100900,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.9.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.9.0/musi-beta-vA.9.0.apk",
+  "size": 2984203,
+  "notes": "内测版 A.9.0（与对外 1.9.0 同代码，含全部功能，不受内容限制）：\n1) 长按快进/快退改回「倍速播放」并分两档 —— 按住 2 秒起 3 倍速，继续按住到 5 秒升 5 倍速，松手立刻停下并恢复原速度；\n2) 新增左右拨动：向右拨一次跳进 3 分钟，向左拨一次跳退 3 分钟（上下拨仍然是调亮度）；\n3) 播放控制条与按键都改成半透明，弹出来不再把画面整块盖死；\n4) 顶栏新增「设置」入口；\n5) 搜索栏升级为三栏面板：左边 A-Z + 0-9 字母数字宫格、中间联想片名、右边对应的电影推荐（聚焦哪条联想就换那部片的片子，点海报直接看）；\n6) 手机等窄屏自动收成竖排：联想在上、宫格在下；\n7) 内测版不设体验期与内容限制：直播全频道、其他仓库入口全部保留。"
 }
