@@ -16,7 +16,7 @@
 | --- | --- | --- | --- | --- | --- |
 | **慕思浏览器** | `musi` | 对外 | v1.0.0 (10000) | 2.83 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v1.0.0/musi-v1.0.0.apk) |
 | **滚动提示器** | `scrollprompter` | 对外 | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
-| **予知影视** | `yuzhi` | 对外 | v3.5.3 (109) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk) |
+| **予知影视** | `yuzhi` | 对外 | v1.0.0 (10000) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk) |
 <!-- APPS:END -->
 
 > 表格由 `tools/publish.py` 自动维护，不用手改。
