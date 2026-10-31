@@ -1,8 +1,8 @@
 {
-  "version": "A.3.0",
-  "code": 100300,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.3.0",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.3.0/musi-beta-vA.3.0.apk",
-  "size": 2978175,
-  "notes": "内测 A.3.0（= 对外 1.3.0 的同源包，不加固）：含体验期判定代码但 A 线自动跳过，无任何时间限制；直播只留央视频道、仓库入口关闭同对外版。用于对比验证：同一台机器上对外版到期弹窗、内测版照常点播。"
+  "version": "A.4.0",
+  "code": 100400,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.4.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.4.0/musi-beta-vA.4.0.apk",
+  "size": 2980114,
+  "notes": "内测 A.4.0（同源码、不加固）：\n· 内容全量：直播保留全部频道（含卫视/港澳台/国际新闻），顶栏「仓库」与「其他仓库」菜单照旧可用；\n· 无体验期限制；\n· 升级流程与对外版一致（先授权再下载、自动续传）；\n· 直播页触屏工具栏：锁定/横屏/铺满，竖屏自适应、横屏满屏。"
 }
