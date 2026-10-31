@@ -1,7 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T01:12:14Z",
+  "updatedAt": "2026-10-31T01:12:59Z",
   "apps": [
+    {
+      "appId": "musi",
+      "name": "慕思浏览器",
+      "versionName": "6.11",
+      "versionCode": 55,
+      "publishedAt": "2026-10-31T01:12:59Z",
+      "mandatory": false,
+      "minSdk": 21,
+      "packageName": "com.mytv.lite",
+      "notes": "开播不弹横幅 · 进度条任意位置可点可拖 · 新增30秒档 · 直播点屏幕弹频道侧边栏",
+      "size": 2971337,
+      "sha256": "d85afe7d6bfa7a1d9da64c058e712755aa7925a16816325a4e2d995fd84cc2ad",
+      "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
+      "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v6.11/musi-v6.11.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v6.11"
+    },
     {
       "appId": "scrollprompter",
       "name": "滚动提示器",
