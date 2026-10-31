@@ -1,0 +1,8 @@
+{
+  "version": "A.1.0",
+  "code": 100100,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.1.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.1.0/musi-beta-vA.1.0.apk",
+  "size": 2976969,
+  "notes": "内测线首发：版本号前缀由 9 改为 A（A.1.0 = 原 9.1.0，versionCode 100100）。含连续剧场三榜、赞赏作者；本包不加固，供验收。客户端会读 musi-beta 通道，客户看不到这条线。"
+}
