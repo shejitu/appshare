@@ -1,0 +1,4 @@
+_migrate/
+_private/
+*.apk
+__pycache__/

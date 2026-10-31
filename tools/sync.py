@@ -24,7 +24,7 @@ import urllib.request
 OWNER, REPO, BRANCH = "shejitu", "appshare", "main"
 API = "https://api.github.com"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKIP_DIRS = {".git", "__pycache__", ".idea", ".vscode"}
+SKIP_DIRS = {".git", "__pycache__", ".idea", ".vscode", "_migrate", "_private"}
 SKIP_EXT = {".pyc", ".apk", ".zip"}
 DEFAULT_TOKEN_FILE = r"E:/我原创的软件/github2monthpat.txt"
 
