@@ -75,6 +75,17 @@ https://cdn.jsdelivr.net/gh/shejitu/appshare@main/<appId>/version.json
 
 ---
 
+### 旧格式兼容（从 yuzhi-release / musi-release 迁过来的）
+
+那两个老仓库当年用的是扁平格式 `{version, code, page, apk, size, notes}`。
+为了不让老客户端改代码，每个 App 额外提供一份同格式文件：
+
+```
+https://raw.githubusercontent.com/shejitu/appshare/main/<appId>/legacy.json
+```
+
+字段一模一样，**客户端只改 URL，解析代码一行都不用动**。（`publish.py` 每次发版会自动更新它。）
+
 ## 全量索引
 
 `apps.json` 列出所有 App 的最新版本，做应用市场式列表页时用得上：
@@ -106,7 +117,8 @@ python tools/publish.py \
 appshare/
 ├─ apps.json                 # 全量索引（所有 App 的最新版本）
 ├─ <appId>/
-│  └─ version.json           # 该 App 的最新版本信息，客户端拉的就是它
+│  ├─ version.json           # 该 App 的最新版本信息，客户端拉的就是它
+│  └─ legacy.json            # 旧扁平格式兼容（老客户端只改 URL 就能用）
 ├─ docs/
 │  ├─ 接入指南.md            # 安卓端检查更新 + 下载 + 安装
 │  ├─ 发布流程.md            # 怎么发版、怎么强制更新、怎么回滚

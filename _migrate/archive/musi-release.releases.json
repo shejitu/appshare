@@ -1,0 +1,35 @@
+[
+  {
+    "tag": "v6.11",
+    "published": "2026-10-31T00:12:24Z",
+    "assets": [
+      {
+        "name": "MusiBrowser-v6.11.apk",
+        "size": 2971337,
+        "sha256": "sha256:d85afe7d6bfa7a1d9da64c058e712755aa7925a16816325a4e2d995fd84cc2ad"
+      }
+    ]
+  },
+  {
+    "tag": "v6.10",
+    "published": "2026-10-30T23:53:50Z",
+    "assets": [
+      {
+        "name": "MusiBrowser-v6.10.apk",
+        "size": 2970399,
+        "sha256": "sha256:5a6b3b785fc89e3e19c30e6d3f9ef87adddfef916bf3bf255c94c31f7f1aad1c"
+      }
+    ]
+  },
+  {
+    "tag": "v6.9",
+    "published": "2026-10-30T23:17:07Z",
+    "assets": [
+      {
+        "name": "MusiBrowser-v6.9.apk",
+        "size": 6008252,
+        "sha256": "sha256:426f34ec64a8bf7e3ecd9d5acbdbb58540e8b147b1c9a38e61063d13f0276e17"
+      }
+    ]
+  }
+]

@@ -229,6 +229,20 @@ def build_version_json(args, apk_name, size, sha256, download_url, published_at)
     return doc
 
 
+def build_legacy_json(doc):
+    """旧版扁平格式（yuzhi-release / musi-release 时代的写法）。
+    老客户端只改 URL、不改解析代码就能继续用。"""
+    return {
+        "version": doc["versionName"],
+        "code": doc["versionCode"],
+        "page": "https://github.com/%s/%s/releases/tag/%s-v%s" % (
+            OWNER, REPO, doc["appId"], doc["versionName"]),
+        "apk": doc["apk"]["url"],
+        "size": doc["apk"]["size"],
+        "notes": doc.get("notes", ""),
+    }
+
+
 def build_index_entry(app_id, doc):
     return {
         "appId": app_id,
@@ -410,11 +424,18 @@ def main():
              "release: %s v%s" % (args.app_id, args.version), token, old_sha)
     print("  - 已写入 %s" % path)
 
+    legacy_path = "%s/legacy.json" % args.app_id
+    legacy_text = json.dumps(build_legacy_json(version_doc), ensure_ascii=False, indent=2) + "\n"
+    put_file(legacy_path, legacy_text,
+             "release: %s v%s（旧格式兼容）" % (args.app_id, args.version), token,
+             get_sha_or_none(legacy_path, token))
+    print("  - 已写入 %s" % legacy_path)
+
     print("[4/4] 更新索引与 README")
     index, index_text = update_index(args.app_id, build_index_entry(args.app_id, version_doc), token)
     readme_text = update_readme(index, token)
 
-    local = {path: version_text}
+    local = {path: version_text, legacy_path: legacy_text}
     if index_text:
         local["apps.json"] = index_text
     if readme_text:
@@ -424,6 +445,8 @@ def main():
     print("\n完成。客户端检查更新地址：")
     print("  https://raw.githubusercontent.com/%s/%s/%s/%s/version.json" % (OWNER, REPO, BRANCH, args.app_id))
     print("  镜像: https://cdn.jsdelivr.net/gh/%s/%s@%s/%s/version.json" % (OWNER, REPO, BRANCH, args.app_id))
+    print("  旧格式兼容: https://raw.githubusercontent.com/%s/%s/%s/%s/legacy.json" % (
+        OWNER, REPO, BRANCH, args.app_id))
     print("  下载: %s" % download_url)
 
 

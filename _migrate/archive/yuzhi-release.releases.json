@@ -1,0 +1,24 @@
+[
+  {
+    "tag": "v3.5.3",
+    "published": "2026-10-31T00:04:01Z",
+    "assets": [
+      {
+        "name": "YuzhiTV-v3.5.3.apk",
+        "size": 32174084,
+        "sha256": "sha256:e4693c5ea8149380f1899160805bed54482784d0e94f3de7ee09e56ad742e46b"
+      }
+    ]
+  },
+  {
+    "tag": "v3.5.2",
+    "published": "2026-10-30T23:28:09Z",
+    "assets": [
+      {
+        "name": "YuzhiTV-v3.5.2.apk",
+        "size": 32226062,
+        "sha256": "sha256:5ccf60e515bb27be60154169598c4f08f4d0a946c13c586c5b5aa557290ddeff"
+      }
+    ]
+  }
+]
