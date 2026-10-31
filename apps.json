@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T04:47:06Z",
+  "updatedAt": "2026-10-31T04:47:31Z",
   "apps": [
     {
       "appId": "musi",
@@ -24,19 +24,19 @@
       "appId": "musi-beta",
       "channel": "beta",
       "name": "慕思浏览器（内测）",
-      "versionName": "A.3.0",
-      "versionCode": 100300,
-      "publishedAt": "2026-10-31T04:20:02Z",
+      "versionName": "A.4.0",
+      "versionCode": 100400,
+      "publishedAt": "2026-10-31T04:47:31Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "内测 A.3.0（= 对外 1.3.0 的同源包，不加固）：含体验期判定代码但 A 线自动跳过，无任何时间限制；直播只留央视频道、仓库入口关闭同对外版。用于对比验证：同一台机器上对外版到期弹窗、内测版照常点播。",
-      "size": 2978175,
-      "sha256": "67bc34fedd819e9812dff398472cb262ce0e3e4f1d89be664dd7432a2d16a73f",
+      "notes": "内测 A.4.0（同源码、不加固）：\n· 内容全量：直播保留全部频道（含卫视/港澳台/国际新闻），顶栏「仓库」与「其他仓库」菜单照旧可用；\n· 无体验期限制；\n· 升级流程与对外版一致（先授权再下载、自动续传）；\n· 直播页触屏工具栏：锁定/横屏/铺满，竖屏自适应、横屏满屏。",
+      "size": 2980114,
+      "sha256": "c756ce3c48906d5044780924142b2bcfa09ad28b50bb5a1ec1840f0887e768d3",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.3.0/musi-beta-vA.3.0.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.3.0"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.4.0/musi-beta-vA.4.0.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.4.0"
     },
     {
       "appId": "scrollprompter",
