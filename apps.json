@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T23:21:02Z",
+  "updatedAt": "2026-10-31T23:21:18Z",
   "apps": [
     {
       "appId": "musi",
@@ -26,13 +26,13 @@
       "name": "慕思浏览器",
       "versionName": "A.9.0",
       "versionCode": 100900,
-      "publishedAt": "2026-10-31T23:06:56Z",
+      "publishedAt": "2026-10-31T23:21:18Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
       "notes": "内测版 A.9.0（与对外 1.9.0 同代码，含全部功能，不受内容限制）：\n1) 长按快进/快退改回「倍速播放」并分两档 —— 按住 2 秒起 3 倍速，继续按住到 5 秒升 5 倍速，松手立刻停下并恢复原速度；\n2) 新增左右拨动：向右拨一次跳进 3 分钟，向左拨一次跳退 3 分钟（上下拨仍然是调亮度）；\n3) 播放控制条与按键都改成半透明，弹出来不再把画面整块盖死；\n4) 顶栏新增「设置」入口；\n5) 搜索栏升级为三栏面板：左边 A-Z + 0-9 字母数字宫格、中间联想片名、右边对应的电影推荐（聚焦哪条联想就换那部片的片子，点海报直接看）；\n6) 手机等窄屏自动收成竖排：联想在上、宫格在下；\n7) 内测版不设体验期与内容限制：直播全频道、其他仓库入口全部保留。",
-      "size": 2984203,
-      "sha256": "2925c11432f1db8a2a7c255e019d88faec814212fc3a22e0145181a3bed9f0d3",
+      "size": 2984401,
+      "sha256": "46360d17ba290da84aeb2e009104cf12cf5b73f1ff2d8a24d017cdac6a077c14",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
       "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.9.0/musi-beta-vA.9.0.apk",
