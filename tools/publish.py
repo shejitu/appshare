@@ -39,6 +39,7 @@ import hashlib
 import json
 import mimetypes
 import os
+import re
 import struct
 import sys
 import time
@@ -411,17 +412,29 @@ def sanity_check_apk(path):
 #   versionCode = major*10000 + minor*100 + patch
 #     1.0.0 -> 10000   1.0.1 -> 10001   1.1.0 -> 10100   2.0.0 -> 20000
 # --------------------------------------------------------------------------
-CHANNEL_BY_MAJOR = {1: "stable", 9: "beta"}
+CHANNEL_BY_MAJOR = {1: "stable", 9: "beta", 10: "beta"}
 
 
 def parse_version(text):
-    """X.Y.Z（三段）或 X.Y（两段，老项目）都接受，统一成三段。"""
-    parts = str(text).strip().split(".")
-    if len(parts) not in (2, 3) or not all(p.isdigit() for p in parts):
-        raise SystemExit("版本号要写成 X.Y.Z，例如 1.0.0（收到：%s）" % text)
-    while len(parts) < 3:
-        parts.append("0")
-    return tuple(int(p) for p in parts)
+    """X.Y.Z（三段）或 X.Y（两段，老项目）都接受，统一成三段。
+    A.Y.Z（内测线，如 A.5.0）也接受：A 在 versionCode 里记作 10，
+    所以 A.5.0 = 100500，恒大于对外线的 1xxxx。
+    注意：用纯字符串解析，不用 re —— 本机某些 Python 的 re 行为异常。"""
+    s = str(text).strip()
+    beta = s[:1] in ("A", "a")
+    if beta:
+        s = s[1:]
+        if s[:1] == ".":
+            s = s[1:]
+    parts = s.split(".")
+    if len(parts) not in (2, 3) or not all(x.isdigit() for x in parts):
+        raise SystemExit("版本号要写成 X.Y.Z 或 A.Y.Z，例如 1.0.0 / A.5.0（收到：%s）" % text)
+    nums = [int(x) for x in parts]
+    if beta:
+        nums.insert(0, 10)
+    while len(nums) < 3:
+        nums.append(0)
+    return tuple(nums[:3])
 
 
 def channel_of(v):
