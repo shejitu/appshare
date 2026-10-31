@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/shejitu/appshare/main/docs/version.schema.json",
+  "title": "appshare version.json",
+  "description": "单个 App 的最新版本信息，客户端检查更新时拉取",
+  "type": "object",
+  "required": ["schemaVersion", "appId", "versionName", "versionCode", "apk"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "appId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$",
+      "description": "全小写标识，等于仓库里的目录名，发布后不可更改"
+    },
+    "name": { "type": "string", "description": "显示名称" },
+    "versionName": { "type": "string", "description": "给人看的版本号，如 1.9" },
+    "versionCode": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "整数版本号，客户端唯一的比较依据，必须单调递增"
+    },
+    "publishedAt": { "type": "string", "description": "UTC 时间 ISO8601" },
+    "mandatory": { "type": "boolean", "description": "true 表示强制更新" },
+    "minSdk": {
+      "type": ["integer", "null"],
+      "description": "最低 Android API；客户端低于此值不应提示更新"
+    },
+    "packageName": {
+      "type": ["string", "null"],
+      "description": "应用包名，用于核对与已安装版本是否同一 App"
+    },
+    "notes": { "type": "string", "description": "更新说明，纯文本，允许换行" },
+    "apk": {
+      "type": "object",
+      "required": ["file", "url", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "file": { "type": "string", "description": "安装包文件名" },
+        "size": { "type": "integer", "minimum": 0, "description": "字节数，下载后核对" },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "安装包 SHA-256 十六进制，下载后必须校验"
+        },
+        "url": { "type": "string", "format": "uri", "description": "主下载地址（GitHub Releases）" },
+        "mirrors": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" },
+          "description": "备用下载地址，按顺序回退"
+        }
+      }
+    }
+  }
+}
