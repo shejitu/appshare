@@ -1,23 +1,24 @@
 {
   "schemaVersion": 1,
   "appId": "musi",
+  "channel": "stable",
   "name": "慕思浏览器",
-  "versionName": "6.11",
-  "versionCode": 55,
-  "publishedAt": "2026-10-31T01:12:59Z",
+  "versionName": "1.0.0",
+  "versionCode": 10000,
+  "publishedAt": "2026-10-31T01:50:19Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "开播不弹横幅 · 进度条任意位置可点可拖 · 新增30秒档 · 直播点屏幕弹频道侧边栏",
+  "notes": "统一版本号重新起算；对外正式版从此按 1.x.x 迭代（内测走 9.x.x 单独一条线）",
   "apk": {
-    "file": "musi-v6.11.apk",
-    "size": 2971337,
-    "sha256": "d85afe7d6bfa7a1d9da64c058e712755aa7925a16816325a4e2d995fd84cc2ad",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-v6.11/musi-v6.11.apk",
+    "file": "musi-v1.0.0.apk",
+    "size": 2971341,
+    "sha256": "b3746851437dd75e799472f778ef86cfd887e6bbba447fa797f24285e0dde188",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.0.0/musi-v1.0.0.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v6.11/musi-v6.11.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v6.11/musi-v6.11.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v6.11/musi-v6.11.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.0.0/musi-v1.0.0.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.0.0/musi-v1.0.0.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.0.0/musi-v1.0.0.apk"
     ]
   }
 }
