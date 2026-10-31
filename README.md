@@ -12,11 +12,11 @@
 ## App 列表
 
 <!-- APPS:START -->
-| App | 标识 | 最新版本 | 大小 | 下载 |
-| --- | --- | --- | --- | --- |
-| **慕思浏览器** | `musi` | v6.11 (55) | 2.83 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v6.11/musi-v6.11.apk) |
-| **滚动提示器** | `scrollprompter` | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
-| **予知影视** | `yuzhi` | v3.5.3 (109) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk) |
+| App | 标识 | 渠道 | 最新版本 | 大小 | 下载 |
+| --- | --- | --- | --- | --- | --- |
+| **慕思浏览器** | `musi` | 对外 | v6.11 (55) | 2.83 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v6.11/musi-v6.11.apk) |
+| **滚动提示器** | `scrollprompter` | 对外 | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
+| **予知影视** | `yuzhi` | 对外 | v3.5.3 (109) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk) |
 <!-- APPS:END -->
 
 > 表格由 `tools/publish.py` 自动维护，不用手改。
