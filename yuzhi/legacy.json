@@ -1,8 +1,8 @@
 {
-  "version": "3.5.3",
-  "code": 109,
-  "page": "https://github.com/shejitu/appshare/releases/tag/yuzhi-v3.5.3",
-  "apk": "https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk",
-  "size": 32174084,
-  "notes": "编译期剥离日志，不再泄漏接口地址与搜索关键词；崩溃栈去掉源文件名"
+  "version": "1.0.0",
+  "code": 10000,
+  "page": "https://github.com/shejitu/appshare/releases/tag/yuzhi-v1.0.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk",
+  "size": 32173721,
+  "notes": "统一版本号重新起算；对外正式版从此按 1.x.x 迭代（内测走 9.x.x 单独一条线）"
 }
