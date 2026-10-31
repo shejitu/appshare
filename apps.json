@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T11:17:13Z",
+  "updatedAt": "2026-10-31T13:38:42Z",
   "apps": [
     {
       "appId": "musi",
       "channel": "stable",
       "name": "慕思浏览器",
-      "versionName": "1.7.0",
-      "versionCode": 10700,
-      "publishedAt": "2026-10-31T11:16:16Z",
+      "versionName": "1.8.0",
+      "versionCode": 10800,
+      "publishedAt": "2026-10-31T13:38:42Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "公测版 1.7.0：\n1) 播放页新增触摸手势 —— 长按屏幕右半区 3 倍速快进、左半区 3 倍速倒退，双击暂停/继续，手指上下拨动调亮度；\n2) 播放控制条只占屏幕下方 1/6，新增「返回点播」按钮；\n3) 横屏默认「适应」（留黑边），不再裁边铺满；\n4) 点播顶栏标签由「{站名}·海报墙」改为「推荐影视」；\n5) 体验期到期改为宽限式：先正常使用 5 分钟再提示，设置里「体验授权」可永久解除；\n6) 沿用 1.5.0 的顶栏三栏（赞赏作者 / 播放记录 / 升级版本）；直播仅央视、其他仓库关闭（对外版限定）；体验期至 2026-12-31。",
+      "notes": "公测版 1.8.0（播放手感三条实测反馈修复）：\n1) 长按快进/快退改成「一次跳 2 分钟」——长按右半屏 +2 分钟、左半屏 -2 分钟，按住不放每 900ms 再跳一个，到头/到尾自动停下并提示；原来的 3 倍速播放要按住 40 秒才挪过 2 分钟，等于没生效；\n2) 取消「双击暂停」——触碰画面只负责弹出/收起控制条（加了 300ms 防抖，不会弹出来又立刻收回去），暂停请用控制条上的「⏸ 暂停」或遥控器 OK 键；\n3) 顺带修掉两处手感 bug：点一下屏幕会莫名自己快进起来（长按定时器松手时没撤掉）、长按判定放宽到 700ms，不再把稍慢一点的点击误判成长按；\n4) 播放控制条在屏幕下方 1/6 区域内一屏全显，按键不再露半截、也不用竖着滑才看得到；\n5) 沿用 1.7.0 的横屏默认「适应」、返回点播按钮、点播顶栏改「推荐影视」；直播仅央视、其他仓库关闭（对外版限定）；体验期至 2026-12-31。",
       "size": 2981641,
-      "sha256": "2fc55228ecffe19b3ebf4751c1f48000d1de30b6ba3e64f7c48c69682aff85df",
+      "sha256": "0db5311334a77a07858168159ccbf8dd8b88c39c028b79f2384aec0ca10eafcd",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.7.0/musi-v1.7.0.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.7.0"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.8.0/musi-v1.8.0.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.8.0"
     },
     {
       "appId": "musi-beta",
