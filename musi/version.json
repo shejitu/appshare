@@ -3,22 +3,22 @@
   "appId": "musi",
   "channel": "stable",
   "name": "慕思浏览器",
-  "versionName": "1.5.0",
-  "versionCode": 10500,
-  "publishedAt": "2026-10-31T06:38:59Z",
+  "versionName": "1.7.0",
+  "versionCode": 10700,
+  "publishedAt": "2026-10-31T11:16:16Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "公测版 1.5.0：\n1) 顶栏精简：只保留「赞赏作者 / 播放记录 / 升级版本」三个入口，界面更清爽；\n2) 「历史」改名「播放记录」、「版本」改名「升级版本」，一眼能懂；\n3) 检测到新版本时按钮改为「立刻更新」，检查结果的提示更干净；\n4) 「赞赏作者」弹窗新增：赞赏后加微信可获更多实用宝贝；\n5) 播放体验沿用 1.4.0：升级前先引导授权、直播触屏工具栏（锁定/横屏/铺满）、竖屏自适应；\n6) 直播仅央视、其他仓库关闭（对外版限定）；体验期至 2026-12-31。",
+  "notes": "公测版 1.7.0：\n1) 播放页新增触摸手势 —— 长按屏幕右半区 3 倍速快进、左半区 3 倍速倒退，双击暂停/继续，手指上下拨动调亮度；\n2) 播放控制条只占屏幕下方 1/6，新增「返回点播」按钮；\n3) 横屏默认「适应」（留黑边），不再裁边铺满；\n4) 点播顶栏标签由「{站名}·海报墙」改为「推荐影视」；\n5) 体验期到期改为宽限式：先正常使用 5 分钟再提示，设置里「体验授权」可永久解除；\n6) 沿用 1.5.0 的顶栏三栏（赞赏作者 / 播放记录 / 升级版本）；直播仅央视、其他仓库关闭（对外版限定）；体验期至 2026-12-31。",
   "apk": {
-    "file": "musi-v1.5.0.apk",
+    "file": "musi-v1.7.0.apk",
     "size": 2981641,
-    "sha256": "1b91669eb3aff6b809c533809dcefbdda159d455bae1910c9dbbe372c070a524",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.5.0/musi-v1.5.0.apk",
+    "sha256": "2fc55228ecffe19b3ebf4751c1f48000d1de30b6ba3e64f7c48c69682aff85df",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.7.0/musi-v1.7.0.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.5.0/musi-v1.5.0.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.5.0/musi-v1.5.0.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.5.0/musi-v1.5.0.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.7.0/musi-v1.7.0.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.7.0/musi-v1.7.0.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.7.0/musi-v1.7.0.apk"
     ]
   }
 }
