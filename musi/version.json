@@ -3,22 +3,22 @@
   "appId": "musi",
   "channel": "stable",
   "name": "慕思浏览器",
-  "versionName": "1.3.0",
-  "versionCode": 10300,
-  "publishedAt": "2026-10-31T04:19:40Z",
+  "versionName": "1.4.0",
+  "versionCode": 10400,
+  "publishedAt": "2026-10-31T04:47:06Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "公测版 1.3.0：① 新增体验期——有效期至 2026-12-31（北京时间），到期后点播提示「体验版本到期，需要新版本请联系微信：shejitu」，点确定自动退出；判定用网络时间+开机计时，改系统日期/时区无效。② 直播只保留央视频道（CCTV/CGTN/央视），其余频道不再出现也不能播。③ 首页「仓库」入口隐藏，「其他仓库」点击提示「限制内容」。④ 加固后压缩策略修复，resources.arsc 保持未压缩（不再 -124）。",
+  "notes": "公测版 1.4.0：\n1) 升级前先引导开启「安装未知应用」，允许后返回自动接着下载；升级包改存到 FileProvider 可读目录，解决「下完了装不上」；\n2) 更新弹窗只保留「下载升级 / 以后再说」，去掉链接下载入口；\n3) 直播页触屏工具栏：锁定 / 横屏 / 铺满（直播无快进暂停，故不设这三键）；\n4) 竖屏按宽度自适应、整幅画面完整，横屏铺满全屏；\n5) 直播仅央视、其他仓库关闭（对外版限定）；体验期至 2026-12-31。",
   "apk": {
-    "file": "musi-v1.3.0.apk",
+    "file": "musi-v1.4.0.apk",
     "size": 2981641,
-    "sha256": "eaebf3a932e09f43fc79daf2a6866db32a4a8bbb2e22abf9339263588b3791fa",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.3.0/musi-v1.3.0.apk",
+    "sha256": "1e54c87a9eb41b11129e64ed846e0f8b0dd0c8f4490579abdc1599600c9ed11f",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.4.0/musi-v1.4.0.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.3.0/musi-v1.3.0.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.3.0/musi-v1.3.0.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.3.0/musi-v1.3.0.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.4.0/musi-v1.4.0.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.4.0/musi-v1.4.0.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.4.0/musi-v1.4.0.apk"
     ]
   }
 }
