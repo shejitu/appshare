@@ -5,7 +5,7 @@
   "name": "慕思浏览器",
   "versionName": "1.9.0",
   "versionCode": 10900,
-  "publishedAt": "2026-10-31T23:06:41Z",
+  "publishedAt": "2026-10-31T23:21:02Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
@@ -13,7 +13,7 @@
   "apk": {
     "file": "musi-v1.9.0.apk",
     "size": 2985737,
-    "sha256": "c57ad7bd17315e1acae4b6fbf1697761aa91d47caac757c900c827eee9308ed9",
+    "sha256": "a8dc08ef56ae547d5844cfebc8694961b41625d23a729d2c0e4a0a0957871b9e",
     "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.9.0/musi-v1.9.0.apk",
     "mirrors": [
       "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.9.0/musi-v1.9.0.apk",
