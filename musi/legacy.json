@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
-  "code": 10000,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.0.0",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.0.0/musi-v1.0.0.apk",
-  "size": 2971341,
-  "notes": "统一版本号重新起算；对外正式版从此按 1.x.x 迭代（内测走 9.x.x 单独一条线）"
+  "version": "1.2.0",
+  "code": 10200,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.0/musi-v1.2.0.apk",
+  "size": 2641673,
+  "notes": "1. 「赞赏」改为「赞赏作者」；2. 新增「连续剧场」（位于搜索之后、直播之前）：国产剧 / 海外剧 双榜 × 热播 / 高分 切换，另加 AI 短剧榜（红牛源）；3. 对外包启用 BLA 加固 + 运行时签名校验（防破解、防二次打包）"
 }
