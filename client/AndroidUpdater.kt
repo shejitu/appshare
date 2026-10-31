@@ -53,9 +53,9 @@ object AppUpdater {
 
     /** 检查更新的地址模板，按顺序回退（%s = appId） */
     private val BASE_URLS = listOf(
-        "https://raw.githubusercontent.com/shejitu/appshare/main/%s/version.json",
         "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/%s/version.json",
-        "https://ghfast.top/https://raw.githubusercontent.com/shejitu/appshare/main/%s/version.json"
+        "https://ghproxy.net/https://raw.githubusercontent.com/shejitu/appshare/main/%s/version.json",
+        "https://raw.githubusercontent.com/shejitu/appshare/main/%s/version.json"
     )
 
     private const val CONNECT_TIMEOUT = 12_000

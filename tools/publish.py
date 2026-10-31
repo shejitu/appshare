@@ -53,14 +53,30 @@ API = "https://api.github.com"
 DEFAULT_TOKEN_FILE = r"E:/我原创的软件/github2monthpat.txt"
 
 # 国内可用性兜底：客户端按顺序尝试，任一个成功即停。
+# 顺序是按 2026-10 实测结果排的（ghfast.top 当时不通，放最后兜底）。
 MIRROR_PREFIXES = [
-    "https://ghfast.top/",
     "https://ghproxy.net/",
     "https://gh-proxy.com/",
+    "https://ghfast.top/",
 ]
 
 APPS_START = "<!-- APPS:START -->"
 APPS_END = "<!-- APPS:END -->"
+
+# 本地仓库副本（tools/ 的上一层）。发布后顺手同步，避免本地与远端两套内容。
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def local_sync(files):
+    """把刚写到远端的文本同时落到本地副本。"""
+    if not os.path.isdir(REPO_ROOT):
+        return
+    for rel, text in files.items():
+        dst = os.path.join(REPO_ROOT, rel.replace("/", os.sep))
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(text)
+    print("  - 本地副本已同步（%d 个文件）" % len(files))
 
 
 # --------------------------------------------------------------------------
@@ -250,10 +266,10 @@ def update_index(app_id, entry, token, dry_run=False):
     out = json.dumps(index, ensure_ascii=False, indent=2) + "\n"
     if dry_run:
         print("  [dry-run] apps.json -> %d 个 app" % len(apps))
-        return index
+        return index, None
     put_file("apps.json", out, "index: %s v%s" % (app_id, entry["versionName"]), token, sha)
     print("  - 已更新 apps.json（共 %d 个 app）" % len(apps))
-    return index
+    return index, out
 
 
 def update_readme(index, token, dry_run=False):
@@ -261,7 +277,7 @@ def update_readme(index, token, dry_run=False):
     text, sha = get_file("README.md", token)
     if not text or APPS_START not in text or APPS_END not in text:
         print("  ! README.md 缺少 APPS 标记区，跳过表格更新")
-        return
+        return None
 
     rows = ["| App | 标识 | 最新版本 | 大小 | 下载 |", "| --- | --- | --- | --- | --- |"]
     for a in index["apps"]:
@@ -278,9 +294,10 @@ def update_readme(index, token, dry_run=False):
 
     if dry_run:
         print("  [dry-run] README 表格 -> %d 行" % len(index["apps"]))
-        return
+        return None
     put_file("README.md", new, "readme: 同步 app 列表", token, sha)
     print("  - 已刷新 README 表格")
+    return new
 
 
 # --------------------------------------------------------------------------
@@ -387,14 +404,22 @@ def main():
 
     print("[3/4] 写 %s/version.json" % args.app_id)
     path = "%s/version.json" % args.app_id
+    version_text = json.dumps(version_doc, ensure_ascii=False, indent=2) + "\n"
     old_sha = get_sha_or_none(path, token)
-    put_file(path, json.dumps(version_doc, ensure_ascii=False, indent=2) + "\n",
+    put_file(path, version_text,
              "release: %s v%s" % (args.app_id, args.version), token, old_sha)
     print("  - 已写入 %s" % path)
 
     print("[4/4] 更新索引与 README")
-    index = update_index(args.app_id, build_index_entry(args.app_id, version_doc), token)
-    update_readme(index, token)
+    index, index_text = update_index(args.app_id, build_index_entry(args.app_id, version_doc), token)
+    readme_text = update_readme(index, token)
+
+    local = {path: version_text}
+    if index_text:
+        local["apps.json"] = index_text
+    if readme_text:
+        local["README.md"] = readme_text
+    local_sync(local)
 
     print("\n完成。客户端检查更新地址：")
     print("  https://raw.githubusercontent.com/%s/%s/%s/%s/version.json" % (OWNER, REPO, BRANCH, args.app_id))
