@@ -519,6 +519,11 @@ def main():
         cur = current_version(args.app_id, token)
         if cur is None:
             raise SystemExit("仓库里还没有 %s 的版本记录，首次请用 --version 1.0.0" % args.app_id)
+        if channel_of(cur) == "other":
+            raise SystemExit(
+                "当前记录是遗留版本号 %d.%d.%d，已作废，不能在这上面递增。\n"
+                "首次请显式指定：--version 1.0.0（对外）或 --version 9.0.0（内测）。"
+                % (cur[0], cur[1], cur[2]))
         new = bump_version(cur, args.bump)
         args.version = "%d.%d.%d" % new
         print("版本递增（%s）：%d.%d.%d → %s" % (args.bump, cur[0], cur[1], cur[2], args.version))
