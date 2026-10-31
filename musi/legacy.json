@@ -1,8 +1,8 @@
 {
-  "version": "1.2.1",
-  "code": 10201,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.2.1",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.2.1/musi-v1.2.1.apk",
-  "size": 2977545,
-  "notes": "修复：加固后 resources.arsc 被压缩，导致部分手机安装报 -124。1.2.0 的连续剧场（国产剧/海外剧/AI短剧三榜、热播/高分切换）与「赞赏作者」均包含在内。安装前请先卸载内测版 9.x（内测 versionCode 更大，覆盖安装会被判为降级）。"
+  "version": "1.3.0",
+  "code": 10300,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.3.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.3.0/musi-v1.3.0.apk",
+  "size": 2981641,
+  "notes": "公测版 1.3.0：① 新增体验期——有效期至 2026-12-31（北京时间），到期后点播提示「体验版本到期，需要新版本请联系微信：shejitu」，点确定自动退出；判定用网络时间+开机计时，改系统日期/时区无效。② 直播只保留央视频道（CCTV/CGTN/央视），其余频道不再出现也不能播。③ 首页「仓库」入口隐藏，「其他仓库」点击提示「限制内容」。④ 加固后压缩策略修复，resources.arsc 保持未压缩（不再 -124）。"
 }
