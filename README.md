@@ -32,9 +32,12 @@ https://raw.githubusercontent.com/shejitu/appshare/main/<appId>/version.json
 国内直连 raw 不稳时的等价镜像：
 
 ```
+https://ghproxy.net/https://raw.githubusercontent.com/shejitu/appshare/main/<appId>/version.json
 https://cdn.jsdelivr.net/gh/shejitu/appshare@main/<appId>/version.json
-https://ghfast.top/https://raw.githubusercontent.com/shejitu/appshare/main/<appId>/version.json
 ```
+
+> jsDelivr 对 `@main` 有缓存，刚发完版可能还是旧内容。客户端要**并发请求三条、取 versionCode 最大**那条，
+> 不能直接采信最先返回的（`client/AndroidUpdater.kt` 已经是这个逻辑）。
 
 拿到的 JSON：
 
@@ -109,7 +112,8 @@ appshare/
 ├─ client/
 │  └─ AndroidUpdater.kt      # 无第三方依赖的现成 Updater
 └─ tools/
-   └─ publish.py             # 发布脚本
+   ├─ publish.py             # 发布安装包（一条命令）
+   └─ sync.py                # 提交文档/工具改动（走 GitHub API，绕开 git push 的网络问题）
 ```
 
 安装包本体不在仓库里，在 [Releases](https://github.com/shejitu/appshare/releases)。

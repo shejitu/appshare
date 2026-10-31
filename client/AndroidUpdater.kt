@@ -51,20 +51,25 @@ data class UpdateInfo(
 
 object AppUpdater {
 
-    /** 检查更新的地址模板，按顺序回退（%s = appId） */
+    /**
+     * 检查更新的地址模板（%s = appId）。
+     * 三条**并发**请求，谁先返回有效 JSON 就收，最后取窗口期内 versionCode 最大的那个：
+     * jsDelivr 的分支缓存可能还是旧内容，靠「取最大」避免误报"已是最新"。
+     */
     private val BASE_URLS = listOf(
-        "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/%s/version.json",
+        "https://raw.githubusercontent.com/shejitu/appshare/main/%s/version.json",
         "https://ghproxy.net/https://raw.githubusercontent.com/shejitu/appshare/main/%s/version.json",
-        "https://raw.githubusercontent.com/shejitu/appshare/main/%s/version.json"
+        "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/%s/version.json"
     )
 
-    private const val CONNECT_TIMEOUT = 12_000
-    private const val READ_TIMEOUT = 20_000
+    private const val CONNECT_TIMEOUT = 8_000
+    private const val READ_TIMEOUT = 12_000
+    private const val RACE_WINDOW_MS = 3_500L
     private val main = Handler(Looper.getMainLooper())
 
     /**
      * 检查更新。回调在主线程。
-     * @param onResult 有新版本返回 UpdateInfo；已是最新返回 null；出错返回 error 非空。
+     * @param onResult 有新版本返回 UpdateInfo；已是最新返回 null；全部地址失败返回 error。
      */
     fun check(
         context: Context,
@@ -73,24 +78,36 @@ object AppUpdater {
         onResult: (info: UpdateInfo?, error: Throwable?) -> Unit
     ) {
         Thread {
-            var lastError: Throwable? = null
+            val got = java.util.Collections.synchronizedList(mutableListOf<UpdateInfo>())
+            val errs = java.util.Collections.synchronizedList(mutableListOf<Throwable>())
+            val latch = java.util.concurrent.CountDownLatch(BASE_URLS.size)
+
             for (tpl in BASE_URLS) {
-                try {
-                    val url = tpl.format(appId) + "?t=" + System.currentTimeMillis()
-                    val body = httpGet(url, null)
-                    val info = parse(body)
-                    // 服务端标记了 minSdk 且本机不满足 → 不提示更新，避免装完崩
-                    if (info.minSdk != null && Build.VERSION.SDK_INT < info.minSdk) {
-                        post { onResult(null, null) }
-                        return@Thread
+                Thread {
+                    try {
+                        val url = tpl.format(appId) + "?t=" + System.currentTimeMillis()
+                        got.add(parse(httpGet(url, null)))
+                    } catch (e: Throwable) {
+                        errs.add(e)
+                    } finally {
+                        latch.countDown()
                     }
-                    post { onResult(if (info.versionCode > currentVersionCode) info else null, null) }
-                    return@Thread
-                } catch (e: Throwable) {
-                    lastError = e
-                }
+                }.start()
             }
-            post { onResult(null, lastError ?: IllegalStateException("所有更新地址均不可用")) }
+            // 全部返回，或等满窗口期（慢的地址不再等）
+            latch.await(RACE_WINDOW_MS, java.util.concurrent.TimeUnit.MILLISECONDS)
+
+            val best = synchronized(got) { got.toList() }.maxByOrNull { it.versionCode }
+            if (best == null) {
+                post { onResult(null, errs.firstOrNull() ?: IllegalStateException("所有更新地址均不可用")) }
+                return@Thread
+            }
+            // 服务端标了 minSdk 且本机不满足 → 不提示更新，免得装完闪退
+            if (best.minSdk != null && Build.VERSION.SDK_INT < best.minSdk) {
+                post { onResult(null, null) }
+                return@Thread
+            }
+            post { onResult(if (best.versionCode > currentVersionCode) best else null, null) }
         }.start()
     }
 
