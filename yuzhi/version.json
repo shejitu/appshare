@@ -1,23 +1,24 @@
 {
   "schemaVersion": 1,
   "appId": "yuzhi",
+  "channel": "stable",
   "name": "予知影视",
-  "versionName": "3.5.3",
-  "versionCode": 109,
-  "publishedAt": "2026-10-31T01:12:14Z",
+  "versionName": "1.0.0",
+  "versionCode": 10000,
+  "publishedAt": "2026-10-31T01:55:58Z",
   "mandatory": false,
   "minSdk": 19,
   "packageName": "com.yuzhi.tv",
-  "notes": "编译期剥离日志，不再泄漏接口地址与搜索关键词；崩溃栈去掉源文件名",
+  "notes": "统一版本号重新起算；对外正式版从此按 1.x.x 迭代（内测走 9.x.x 单独一条线）",
   "apk": {
-    "file": "yuzhi-v3.5.3.apk",
-    "size": 32174084,
-    "sha256": "e4693c5ea8149380f1899160805bed54482784d0e94f3de7ee09e56ad742e46b",
-    "url": "https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk",
+    "file": "yuzhi-v1.0.0.apk",
+    "size": 32173721,
+    "sha256": "057e0f65f282d96b7078cb9092d74d07e78e66cb59302ba8027ced18487b612d",
+    "url": "https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk"
     ]
   }
 }
