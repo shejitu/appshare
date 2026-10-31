@@ -1,8 +1,8 @@
 {
-  "version": "A.1.0",
-  "code": 100100,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.1.0",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.1.0/musi-beta-vA.1.0.apk",
-  "size": 2976969,
-  "notes": "内测线首发：版本号前缀由 9 改为 A（A.1.0 = 原 9.1.0，versionCode 100100）。含连续剧场三榜、赞赏作者；本包不加固，供验收。客户端会读 musi-beta 通道，客户看不到这条线。"
+  "version": "A.3.0",
+  "code": 100300,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.3.0",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.3.0/musi-beta-vA.3.0.apk",
+  "size": 2978175,
+  "notes": "内测 A.3.0（= 对外 1.3.0 的同源包，不加固）：含体验期判定代码但 A 线自动跳过，无任何时间限制；直播只留央视频道、仓库入口关闭同对外版。用于对比验证：同一台机器上对外版到期弹窗、内测版照常点播。"
 }
