@@ -3,22 +3,22 @@
   "appId": "musi-beta",
   "channel": "beta",
   "name": "慕思浏览器",
-  "versionName": "A.5.0",
-  "versionCode": 100500,
-  "publishedAt": "2026-10-31T06:49:01Z",
+  "versionName": "A.7.0",
+  "versionCode": 100700,
+  "publishedAt": "2026-10-31T11:17:13Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "内测 A.5.0（同源码、不加固）：\n· 内容全量：直播保留全部频道（含卫视/港澳台/国际新闻），顶栏入口与「其他仓库」菜单照旧可用；\n· 无体验期限制；\n· 顶栏改名与对外版一致：「历史」→「播放记录」、「版本」→「升级版本」；\n· 「赞赏作者」弹窗新增钩子文案；\n· 升级流程与对外版一致（先授权再下载、自动续传）。",
+  "notes": "内测 A.7.0（同源码、不加固）：\n· 内容全量：直播保留全部频道（含卫视/港澳台/国际新闻），顶栏入口与「其他仓库」菜单照旧可用；\n· 无体验期限制；\n· 播放手势（长按 3 倍进退 / 双击暂停 / 上下调亮度）、控制条限高 1/6 屏、返回点播按钮、横屏默认适应、点播标签改「推荐影视」，均与对外版一致；\n· 设置里「体验授权」入口保留，内测线本身不受限。",
   "apk": {
-    "file": "musi-beta-vA.5.0.apk",
-    "size": 2980327,
-    "sha256": "47609787f525c204ce2f8d4c1609fbd7ea31a168198ba8a1bfd9fc2c6f601d6c",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.5.0/musi-beta-vA.5.0.apk",
+    "file": "musi-beta-vA.7.0.apk",
+    "size": 2981749,
+    "sha256": "9c31a1a477d34465df7a07ba846624d41d6fb651655ae59904318bde3f242f45",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.7.0/musi-beta-vA.7.0.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.5.0/musi-beta-vA.5.0.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.5.0/musi-beta-vA.5.0.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.5.0/musi-beta-vA.5.0.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.7.0/musi-beta-vA.7.0.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.7.0/musi-beta-vA.7.0.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.7.0/musi-beta-vA.7.0.apk"
     ]
   }
 }
