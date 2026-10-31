@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "appId": "yuzhi",
+  "name": "予知影视",
+  "versionName": "3.5.3",
+  "versionCode": 109,
+  "publishedAt": "2026-10-31T01:12:14Z",
+  "mandatory": false,
+  "minSdk": 19,
+  "packageName": "com.yuzhi.tv",
+  "notes": "编译期剥离日志，不再泄漏接口地址与搜索关键词；崩溃栈去掉源文件名",
+  "apk": {
+    "file": "yuzhi-v3.5.3.apk",
+    "size": 32174084,
+    "sha256": "e4693c5ea8149380f1899160805bed54482784d0e94f3de7ee09e56ad742e46b",
+    "url": "https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk",
+    "mirrors": [
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/yuzhi-v3.5.3/yuzhi-v3.5.3.apk"
+    ]
+  }
+}
