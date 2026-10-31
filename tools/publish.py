@@ -467,6 +467,17 @@ def current_version(app_id, token):
     return parse_version(doc["versionName"])
 
 
+def current_code(app_id, token):
+    """仓库里记录的真实 versionCode（老版本号不能用新公式反推，必须直接读）。"""
+    try:
+        text, _ = get_file("%s/version.json" % app_id, token)
+        if text:
+            return int(json.loads(text).get("versionCode") or 0)
+    except (SystemExit, ValueError):
+        pass
+    return None
+
+
 def cmd_list(token):
     text, _ = get_file("apps.json", token)
     index = json.loads(text) if text else {"apps": []}
@@ -590,15 +601,14 @@ def main():
     print("  sha256: %s" % sha)
     print("  tag   : %s" % tag)
 
-    # 安卓不接受 versionCode 回退，提前提醒
+    # 安卓不接受 versionCode 回退，提前提醒（用仓库里记录的真实 code，不要反推）
     try:
-        prev = current_version(args.app_id, token)
+        prev_code = current_code(args.app_id, token)
     except SystemExit:
-        prev = None
-    if prev is not None and int(args.version_code) <= version_code_for(prev):
-        print("  ! 新 versionCode %s 不大于上一版 %s（%d.%d.%d → %d），安卓会拒绝覆盖安装"
-              % (args.version_code, "%d.%d.%d" % prev, prev[0], prev[1], prev[2],
-                 version_code_for(prev)))
+        prev_code = None
+    if prev_code and int(args.version_code) <= prev_code:
+        print("  ! 新 versionCode %s 不大于仓库记录的上一版 %s，安卓会拒绝覆盖安装"
+              % (args.version_code, prev_code))
 
     # 先算好下载地址（Releases 资产的 URL 规则是确定的）
     download_url = "https://github.com/%s/%s/releases/download/%s/%s" % (
