@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-31T23:06:56Z",
+  "updatedAt": "2026-10-31T23:21:02Z",
   "apps": [
     {
       "appId": "musi",
@@ -8,13 +8,13 @@
       "name": "慕思浏览器",
       "versionName": "1.9.0",
       "versionCode": 10900,
-      "publishedAt": "2026-10-31T23:06:41Z",
+      "publishedAt": "2026-10-31T23:21:02Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
       "notes": "公测版 1.9.0（按实测反馈调播放手感、到期规则与搜索面板）：\n1) 长按快进/快退改回「倍速播放」并分两档 —— 按住 2 秒起 3 倍速，继续按住到 5 秒升 5 倍速，松手立刻停下并恢复原速度；\n2) 新增左右拨动：向右拨一次跳进 3 分钟，向左拨一次跳退 3 分钟（上下拨仍然是调亮度）；\n3) 播放控制条与按键都改成半透明，弹出来不再把画面整块盖死；\n4) 到期规则收紧：到期后每次打开仍可正常使用 5 分钟，随后提示「体验已到期，新版请联系微信：shejitu」，点确定直接退出，不再持续播放；\n5) 顶栏新增「设置」入口；\n6) 搜索栏升级为三栏面板：左边 A-Z + 0-9 字母数字宫格（点字母直接输入，不用等输入法）、中间联想片名、右边对应的电影推荐（聚焦哪条联想，右边就换成那部片的片子，点海报直接看）；\n7) 手机等窄屏自动收成竖排：联想在上、宫格在下。",
       "size": 2985737,
-      "sha256": "c57ad7bd17315e1acae4b6fbf1697761aa91d47caac757c900c827eee9308ed9",
+      "sha256": "a8dc08ef56ae547d5844cfebc8694961b41625d23a729d2c0e4a0a0957871b9e",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
       "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.9.0/musi-v1.9.0.apk",
