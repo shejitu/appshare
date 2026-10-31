@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "appId": "scrollprompter",
+  "name": "滚动提示器",
+  "versionName": "1.8",
+  "versionCode": 9,
+  "publishedAt": "2026-10-31T00:48:23Z",
+  "mandatory": false,
+  "minSdk": 21,
+  "packageName": "com.agnes.scrollprompter",
+  "notes": "首个公开分发版本：横屏提词、自动滚动、语音跟读基础能力",
+  "apk": {
+    "file": "scrollprompter-v1.8.apk",
+    "size": 6086594,
+    "sha256": "26ac6fb1bceb5facd3bd6ec365ad4a882a3f1579d74b6318ebc630a0d54e5962",
+    "url": "https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk",
+    "mirrors": [
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk",
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk"
+    ]
+  }
+}
