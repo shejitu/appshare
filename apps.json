@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T00:40:10Z",
+  "updatedAt": "2026-11-01T00:40:24Z",
   "apps": [
     {
       "appId": "musi",
@@ -24,19 +24,19 @@
       "appId": "musi-beta",
       "channel": "beta",
       "name": "慕思浏览器",
-      "versionName": "A.9.0",
-      "versionCode": 100900,
-      "publishedAt": "2026-10-31T23:21:18Z",
+      "versionName": "A.10.0",
+      "versionCode": 101000,
+      "publishedAt": "2026-11-01T00:40:24Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "内测版 A.9.0（与对外 1.9.0 同代码，含全部功能，不受内容限制）：\n1) 长按快进/快退改回「倍速播放」并分两档 —— 按住 2 秒起 3 倍速，继续按住到 5 秒升 5 倍速，松手立刻停下并恢复原速度；\n2) 新增左右拨动：向右拨一次跳进 3 分钟，向左拨一次跳退 3 分钟（上下拨仍然是调亮度）；\n3) 播放控制条与按键都改成半透明，弹出来不再把画面整块盖死；\n4) 顶栏新增「设置」入口；\n5) 搜索栏升级为三栏面板：左边 A-Z + 0-9 字母数字宫格、中间联想片名、右边对应的电影推荐（聚焦哪条联想就换那部片的片子，点海报直接看）；\n6) 手机等窄屏自动收成竖排：联想在上、宫格在下；\n7) 内测版不设体验期与内容限制：直播全频道、其他仓库入口全部保留。",
-      "size": 2984401,
-      "sha256": "46360d17ba290da84aeb2e009104cf12cf5b73f1ff2d8a24d017cdac6a077c14",
+      "notes": "内测版 A.10.0（与对外 1.10.0 同一份源码，内容不收窄）：\n1) 打开软件弹「使用说明」（可勾「不再提示」），含学习测试用途声明与作者微信 shejitu；\n2) 设置页改为「留言窗口 + 版本号 + 更新日期 + 作者联系方式」，管理类入口移到底部「高级」段；\n3) 留言分级授权：7152 解除到期 / 其他仓库 / 直播电视，821218 全功能解锁，其它内容提示未开放；\n4) 顶栏入口按授权级别分档显示，未解锁的直接不出现。",
+      "size": 2986002,
+      "sha256": "a2e7ff110dec7196d7f2554cdbae6bbeab7a9fe28c34de4b743533541ebd3b73",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.9.0/musi-beta-vA.9.0.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.9.0"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.0/musi-beta-vA.10.0.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.0"
     },
     {
       "appId": "scrollprompter",
