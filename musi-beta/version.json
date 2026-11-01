@@ -3,22 +3,22 @@
   "appId": "musi-beta",
   "channel": "beta",
   "name": "慕思浏览器",
-  "versionName": "A.10.01",
-  "versionCode": 101001,
-  "publishedAt": "2026-11-01T01:11:18Z",
+  "versionName": "A.10.02",
+  "versionCode": 101002,
+  "publishedAt": "2026-11-01T01:40:16Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "A.10.01（内测）\n\n1. 修「留言里输入其它内容没有反应」：提示框改用当前页面上下文弹出，不再静默失败。\n2. 留言解锁码改为开关：7152 → 到期/其他仓库/直播电视；821218 → 全功能；\n   已解锁后再输同一个码 → 重新上锁；其它内容弹窗提示未开放。\n3. 首页在授权级别变化后自动重画顶栏。\n4. 版本号 A.10.01 / 101001。",
+  "notes": "A.10.02（内测）\n\n1. 顶栏只在 821218 全功能解锁后才补入口；上锁状态只留赞赏作者/播放记录/升级版本/设置。\n2. 顶栏重复的「📺 直播」剔除，只保留第二行 tab 的直播入口。\n3. 版本号 A.10.02 / 101002。",
   "apk": {
-    "file": "musi-beta-vA.10.01.apk",
-    "size": 2986478,
-    "sha256": "83ec2cc74d28d56b455e5cb9f1337aa34466bd2a6af41f1d9b90c20d6d21ce1a",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk",
+    "file": "musi-beta-vA.10.02.apk",
+    "size": 2986656,
+    "sha256": "a9e87ab241bfbf9766b81b7992f39e26505f1e2562e1c2b82d7689a43b1db505",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.02/musi-beta-vA.10.02.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.02/musi-beta-vA.10.02.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.02/musi-beta-vA.10.02.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.02/musi-beta-vA.10.02.apk"
     ]
   }
 }
