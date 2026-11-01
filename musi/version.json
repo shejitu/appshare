@@ -3,22 +3,22 @@
   "appId": "musi",
   "channel": "stable",
   "name": "慕思浏览器",
-  "versionName": "1.10.02",
-  "versionCode": 11002,
-  "publishedAt": "2026-11-01T01:40:08Z",
+  "versionName": "1.10.03",
+  "versionCode": 11003,
+  "publishedAt": "2026-11-01T04:38:44Z",
   "mandatory": false,
-  "minSdk": 21,
+  "minSdk": null,
   "packageName": "com.mytv.lite",
-  "notes": "1.10.02\n\n1. 顶栏收回到只留四颗：赞赏作者、播放记录、升级版本、设置。\n   订阅 / 网页 / 仓库 / 刷新 / 推送 / 文件 / 代理 一律要输入 821218 全功能解锁后才出现。\n   输入 7152 只解除内容限制（到期时间 + 其他仓库 + 直播电视），体现在第二行 tab，\n   顶栏不额外给入口。\n2. 顶栏的「📺 直播」已剔除 —— 第二行 tab 里本来就有直播入口，两处重复。\n3. 设置页仍只显示：留言窗口、版本号、更新日期、作者联系方式。",
+  "notes": "1.10.03\n\n1. 修复打开软件时「使用说明」弹窗正文空白的问题：弹窗宽度塌缩导致文字被压没，手机 / 平板 / 电视全设备受影响，现已根治（显式限定弹窗宽度，滚动区改为限高内层）。\n2. 仓库列表不再显示上游源地址，只显示仓库名称，界面更干净。\n3. 其余沿用 1.10.02：顶栏只留赞赏作者、播放记录、升级版本、设置四颗；订阅 / 网页 / 仓库 / 刷新 / 推送 / 文件 / 代理输入 821218 全功能解锁后出现。",
   "apk": {
-    "file": "musi-v1.10.02.apk",
+    "file": "musi-v1.10.03.apk",
     "size": 2989833,
-    "sha256": "051ec8877a1fa628c717c0f45a259027ba7bba7771399736095155bf8a183c3f",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.02/musi-v1.10.02.apk",
+    "sha256": "3e97fbcfbb277e6be24a287bb1e49af1e54d6a7e0ec7df3ec95991945360eafd",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.10.02/musi-v1.10.02.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.10.02/musi-v1.10.02.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.10.02/musi-v1.10.02.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk"
     ]
   }
 }
