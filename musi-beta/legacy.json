@@ -1,8 +1,8 @@
 {
-  "version": "A.10.03",
-  "code": 101003,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.03",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.03/musi-beta-vA.10.03.apk",
-  "size": 2986367,
-  "notes": "1.10.03\n\n1. 修复打开软件时「使用说明」弹窗正文空白的问题：弹窗宽度塌缩导致文字被压没，手机 / 平板 / 电视全设备受影响，现已根治（显式限定弹窗宽度，滚动区改为限高内层）。\n2. 仓库列表不再显示上游源地址，只显示仓库名称，界面更干净。\n3. 其余沿用 1.10.02：顶栏只留赞赏作者、播放记录、升级版本、设置四颗；订阅 / 网页 / 仓库 / 刷新 / 推送 / 文件 / 代理输入 821218 全功能解锁后出现。"
+  "version": "A.10.04",
+  "code": 101004,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.04",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.04/musi-beta-vA.10.04.apk",
+  "size": 2986929,
+  "notes": "内测 A.10.04（同源码、不加固）：\n· 详情页竖屏自适应：整屏铺开，播放按钮 17sp；\n· 补齐受限版本隐藏漏口：其他仓库 tab / 空状态按钮 / 频道源设置；\n· 授权按版本线独立记账；\n· 内测仍为全功能，无内容限制。"
 }
