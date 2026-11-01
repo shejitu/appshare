@@ -1,8 +1,8 @@
 {
-  "version": "A.10.01",
-  "code": 101001,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.01",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk",
-  "size": 2986478,
-  "notes": "A.10.01（内测）\n\n1. 修「留言里输入其它内容没有反应」：提示框改用当前页面上下文弹出，不再静默失败。\n2. 留言解锁码改为开关：7152 → 到期/其他仓库/直播电视；821218 → 全功能；\n   已解锁后再输同一个码 → 重新上锁；其它内容弹窗提示未开放。\n3. 首页在授权级别变化后自动重画顶栏。\n4. 版本号 A.10.01 / 101001。"
+  "version": "A.10.02",
+  "code": 101002,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.02",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.02/musi-beta-vA.10.02.apk",
+  "size": 2986656,
+  "notes": "A.10.02（内测）\n\n1. 顶栏只在 821218 全功能解锁后才补入口；上锁状态只留赞赏作者/播放记录/升级版本/设置。\n2. 顶栏重复的「📺 直播」剔除，只保留第二行 tab 的直播入口。\n3. 版本号 A.10.02 / 101002。"
 }
