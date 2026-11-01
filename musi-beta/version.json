@@ -3,22 +3,22 @@
   "appId": "musi-beta",
   "channel": "beta",
   "name": "慕思浏览器",
-  "versionName": "A.10.0",
-  "versionCode": 101000,
-  "publishedAt": "2026-11-01T00:40:24Z",
+  "versionName": "A.10.01",
+  "versionCode": 101001,
+  "publishedAt": "2026-11-01T01:11:18Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "内测版 A.10.0（与对外 1.10.0 同一份源码，内容不收窄）：\n1) 打开软件弹「使用说明」（可勾「不再提示」），含学习测试用途声明与作者微信 shejitu；\n2) 设置页改为「留言窗口 + 版本号 + 更新日期 + 作者联系方式」，管理类入口移到底部「高级」段；\n3) 留言分级授权：7152 解除到期 / 其他仓库 / 直播电视，821218 全功能解锁，其它内容提示未开放；\n4) 顶栏入口按授权级别分档显示，未解锁的直接不出现。",
+  "notes": "A.10.01（内测）\n\n1. 修「留言里输入其它内容没有反应」：提示框改用当前页面上下文弹出，不再静默失败。\n2. 留言解锁码改为开关：7152 → 到期/其他仓库/直播电视；821218 → 全功能；\n   已解锁后再输同一个码 → 重新上锁；其它内容弹窗提示未开放。\n3. 首页在授权级别变化后自动重画顶栏。\n4. 版本号 A.10.01 / 101001。",
   "apk": {
-    "file": "musi-beta-vA.10.0.apk",
-    "size": 2986002,
-    "sha256": "a2e7ff110dec7196d7f2554cdbae6bbeab7a9fe28c34de4b743533541ebd3b73",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.0/musi-beta-vA.10.0.apk",
+    "file": "musi-beta-vA.10.01.apk",
+    "size": 2986478,
+    "sha256": "83ec2cc74d28d56b455e5cb9f1337aa34466bd2a6af41f1d9b90c20d6d21ce1a",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.0/musi-beta-vA.10.0.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.0/musi-beta-vA.10.0.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.0/musi-beta-vA.10.0.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.01/musi-beta-vA.10.01.apk"
     ]
   }
 }
