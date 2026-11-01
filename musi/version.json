@@ -3,22 +3,22 @@
   "appId": "musi",
   "channel": "stable",
   "name": "慕思浏览器",
-  "versionName": "1.10.0",
-  "versionCode": 11000,
-  "publishedAt": "2026-11-01T00:40:10Z",
+  "versionName": "1.10.01",
+  "versionCode": 11001,
+  "publishedAt": "2026-11-01T01:10:54Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "公测版 1.10.0：\n1) 打开软件先弹「使用说明」—— 海报墙怎么播、搜索怎么用（支持拼音首字母，WSS → 我是谁）、播放记录续播、播放手势（长按快进/快退，左右拨动一次跳 3 分钟）；结尾声明本软件仅用于学习与技术测试，不得用于任何商业用途；底部可勾「不再提示」，不勾则每次打开都提示一次；\n2) 设置页精简：只留「留言窗口 + 版本号 + 更新日期 + 作者联系方式」；\n3) 未解锁的功能入口不再摆出来（顶栏入口、其他仓库、管理类设置项），界面更干净；\n4) 使用中遇到问题，可联系作者微信：shejitu。",
+  "notes": "1.10.01\n\n1. 修「留言里输入其它内容没有反应」：以前的提示框是用 ApplicationContext 弹的，\n   没有窗口令牌会静默失败，现在改成用当前页面弹窗，一定能看到。\n2. 留言里的解锁码改为开关：\n   - 输入 7152 → 解锁「到期时间 + 其他仓库 + 直播电视」，并弹窗告知；\n   - 输入 821218 → 解锁全部功能，并弹窗告知；\n   - 已解锁后再输入同一个数字 → 重新上锁，并弹窗告知；\n   - 输入其它任何内容 → 弹窗「该功能未开放，可加作者微信：shejitu 进行沟通。」\n3. 解锁/上锁后返回首页，顶栏入口会立即按新的授权状态重画。\n4. 设置页仍然只显示：留言窗口、版本号、更新日期、作者联系方式。",
   "apk": {
-    "file": "musi-v1.10.0.apk",
-    "size": 2985737,
-    "sha256": "7ab220498d020049c3331e12f508154c2b25c178f2014f9273da5ae578bf76b3",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.0/musi-v1.10.0.apk",
+    "file": "musi-v1.10.01.apk",
+    "size": 2989833,
+    "sha256": "8c6d24e16556d8cf7d812cd81d8a95e681c99d1e1bddfb1e268de4601db72bd0",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.01/musi-v1.10.01.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.10.0/musi-v1.10.0.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.10.0/musi-v1.10.0.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.10.0/musi-v1.10.0.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.10.01/musi-v1.10.01.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.10.01/musi-v1.10.01.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.10.01/musi-v1.10.01.apk"
     ]
   }
 }
