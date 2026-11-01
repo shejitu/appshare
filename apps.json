@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T13:16:31Z",
+  "updatedAt": "2026-11-01T13:16:54Z",
   "apps": [
     {
       "appId": "musi",
@@ -24,19 +24,19 @@
       "appId": "musi-beta",
       "channel": "beta",
       "name": "慕思浏览器内测",
-      "versionName": "A.10.05",
-      "versionCode": 101005,
-      "publishedAt": "2026-11-01T07:04:31Z",
+      "versionName": "A.10.06",
+      "versionCode": 101006,
+      "publishedAt": "2026-11-01T13:16:54Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "内测 A.10.05（同源码、不加固）：\n· 浏览器「站点 / 轻站」面板按全功能解锁收起，内测版仍全部可见；\n· 详情页「豆瓣页面」仅内测保留，方便自查；\n· 其余同对外版 1.10.05。",
-      "size": 2987074,
-      "sha256": "e205036b46b838692f3a7ad7a4161ff0ef8d21dd4c9285e16c07ca02d9b384aa",
+      "notes": "内测 A.10.06（同源码、不加固）：\n· 详情面板电视判据修复，电视上恢复右侧抽屉；\n· 到期网络时间纠偏；\n· 首启只留「使用说明」一个弹窗；\n· 其余同对外版 1.10.06。",
+      "size": 2985970,
+      "sha256": "626fa30f1efbd3015a1cf4e3172c55bd239b0ed4f77569a41aaa746b37449a30",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.05/musi-beta-vA.10.05.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.05"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.06/musi-beta-vA.10.06.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.06"
     },
     {
       "appId": "scrollprompter",
