@@ -3,22 +3,22 @@
   "appId": "musi",
   "channel": "stable",
   "name": "慕思浏览器",
-  "versionName": "1.10.03",
-  "versionCode": 11003,
-  "publishedAt": "2026-11-01T04:38:44Z",
+  "versionName": "1.10.04",
+  "versionCode": 11004,
+  "publishedAt": "2026-11-01T06:12:29Z",
   "mandatory": false,
-  "minSdk": null,
+  "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "1.10.03\n\n1. 修复打开软件时「使用说明」弹窗正文空白的问题：弹窗宽度塌缩导致文字被压没，手机 / 平板 / 电视全设备受影响，现已根治（显式限定弹窗宽度，滚动区改为限高内层）。\n2. 仓库列表不再显示上游源地址，只显示仓库名称，界面更干净。\n3. 其余沿用 1.10.02：顶栏只留赞赏作者、播放记录、升级版本、设置四颗；订阅 / 网页 / 仓库 / 刷新 / 推送 / 文件 / 代理输入 821218 全功能解锁后出现。",
+  "notes": "公测版 1.10.04：\n1) 修复手机竖屏详情页：点海报后简介与播放按钮不再被裁，面板改为整屏自适应，播放按钮字号加大；\n2) 修复对外版隐藏不彻底：未授权时「其他仓库」入口、设置里的「高级」与「频道源设置」全部收起；\n3) 授权状态按版本线独立：内测版的解锁不再带到对外版，升级后需重新在留言框输码。",
   "apk": {
-    "file": "musi-v1.10.03.apk",
+    "file": "musi-v1.10.04.apk",
     "size": 2989833,
-    "sha256": "3e97fbcfbb277e6be24a287bb1e49af1e54d6a7e0ec7df3ec95991945360eafd",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk",
+    "sha256": "d62000a55b609da52d0b461ab08a6aa208df310537c2a9d4bb2b47631e8f0d83",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.04/musi-v1.10.04.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.10.03/musi-v1.10.03.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.10.04/musi-v1.10.04.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-v1.10.04/musi-v1.10.04.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-v1.10.04/musi-v1.10.04.apk"
     ]
   }
 }
