@@ -3,22 +3,22 @@
   "appId": "musi-beta",
   "channel": "beta",
   "name": "慕思浏览器内测",
-  "versionName": "A.10.04",
-  "versionCode": 101004,
-  "publishedAt": "2026-11-01T06:12:48Z",
+  "versionName": "A.10.05",
+  "versionCode": 101005,
+  "publishedAt": "2026-11-01T07:04:31Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "内测 A.10.04（同源码、不加固）：\n· 详情页竖屏自适应：整屏铺开，播放按钮 17sp；\n· 补齐受限版本隐藏漏口：其他仓库 tab / 空状态按钮 / 频道源设置；\n· 授权按版本线独立记账；\n· 内测仍为全功能，无内容限制。",
+  "notes": "内测 A.10.05（同源码、不加固）：\n· 浏览器「站点 / 轻站」面板按全功能解锁收起，内测版仍全部可见；\n· 详情页「豆瓣页面」仅内测保留，方便自查；\n· 其余同对外版 1.10.05。",
   "apk": {
-    "file": "musi-beta-vA.10.04.apk",
-    "size": 2986929,
-    "sha256": "034d08137ab4004645c05c5ca64b4f7ab4484050346c6ce373f8982e0b3d497f",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.04/musi-beta-vA.10.04.apk",
+    "file": "musi-beta-vA.10.05.apk",
+    "size": 2987074,
+    "sha256": "e205036b46b838692f3a7ad7a4161ff0ef8d21dd4c9285e16c07ca02d9b384aa",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.05/musi-beta-vA.10.05.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.04/musi-beta-vA.10.04.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.04/musi-beta-vA.10.04.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.04/musi-beta-vA.10.04.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.05/musi-beta-vA.10.05.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.05/musi-beta-vA.10.05.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.05/musi-beta-vA.10.05.apk"
     ]
   }
 }
