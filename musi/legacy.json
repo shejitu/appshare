@@ -1,8 +1,8 @@
 {
-  "version": "1.10.05",
-  "code": 11005,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.05",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.05/musi-v1.10.05.apk",
-  "size": 2989833,
-  "notes": "公测版 1.10.05：\n1) 对外版不再提供「豆瓣页面（浏览器打开）」——避免把整页浏览器和豆瓣广告/弹窗带给用户；\n2) 空状态「推荐影视站」、浏览器里的「站点 / 轻站」入口，未授权时一律收起；\n3) 分享版进一步减少不必要的信息暴露，界面只保留看片必需项。"
+  "version": "1.10.06",
+  "code": 11006,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.06",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.06/musi-v1.10.06.apk",
+  "size": 2985737,
+  "notes": "公测版 1.10.06：\n1) 修复电视端详情面板被误判成手机的问题，电视上恢复右侧抽屉；\n2) 修复到期网络时间一次抓偏后永久判到期的问题，新抓到的网络时间直接纠正；\n3) 首启只保留「使用说明」一个弹窗，不再连出遥控器指引浮层。"
 }
