@@ -1,8 +1,8 @@
 {
-  "version": "A.10.05",
-  "code": 101005,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.05",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.05/musi-beta-vA.10.05.apk",
-  "size": 2987074,
-  "notes": "内测 A.10.05（同源码、不加固）：\n· 浏览器「站点 / 轻站」面板按全功能解锁收起，内测版仍全部可见；\n· 详情页「豆瓣页面」仅内测保留，方便自查；\n· 其余同对外版 1.10.05。"
+  "version": "A.10.06",
+  "code": 101006,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.06",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.06/musi-beta-vA.10.06.apk",
+  "size": 2985970,
+  "notes": "内测 A.10.06（同源码、不加固）：\n· 详情面板电视判据修复，电视上恢复右侧抽屉；\n· 到期网络时间纠偏；\n· 首启只留「使用说明」一个弹窗；\n· 其余同对外版 1.10.06。"
 }
