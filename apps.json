@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-02T02:08:38Z",
+  "updatedAt": "2026-11-02T02:09:36Z",
   "apps": [
     {
       "appId": "musi",
@@ -24,19 +24,19 @@
       "appId": "musi-beta",
       "channel": "beta",
       "name": "慕思浏览器内测",
-      "versionName": "A.10.07",
-      "versionCode": 101007,
-      "publishedAt": "2026-11-02T01:42:07Z",
+      "versionName": "A.10.08",
+      "versionCode": 101008,
+      "publishedAt": "2026-11-02T02:09:36Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "内测 A.10.07（同源码、不加固）：\n· 搜索进入的影视点开无法播放已修复：线路并发存活探测，死链/网页线路剔除并排后；\n· 全线路失效时明确提示换源；\n· 其余同对外版 1.10.07。",
-      "size": 2986643,
-      "sha256": "5774581e28d7e1c395be5c033830161a8ab8f06e809e9d9278fd910b7dd46020",
+      "notes": "内测 A.10.08（同源码、不加固）：\n· 线路探测跨片污染修复：上一部全死不再影响下一部（单线路片子曾被误报全失效）；\n· 单线路也做存活探测；全死文案补「或网络不稳」；\n· 其余同对外版 1.10.08。",
+      "size": 2986617,
+      "sha256": "00ffa9d1ed8fd1bb09ea6e0af58e34556d2f7ebc7fbd3bce91b473b46427defe",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.07/musi-beta-vA.10.07.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.07"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.08/musi-beta-vA.10.08.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.08"
     },
     {
       "appId": "scrollprompter",
