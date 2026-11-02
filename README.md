@@ -14,7 +14,7 @@
 <!-- APPS:START -->
 | App | 标识 | 渠道 | 最新版本 | 大小 | 下载 |
 | --- | --- | --- | --- | --- | --- |
-| **慕思浏览器** | `musi` | 对外 | v1.10.08 (11008) | 2.85 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v1.10.08/musi-v1.10.08.apk) |
+| **慕思浏览器** | `musi` | 对外 | v1.10.09 (11009) | 2.85 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v1.10.09/musi-v1.10.09.apk) |
 | **慕思浏览器内测** | `musi-beta` | 内测 | vA.10.08 (101008) | 2.85 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.08/musi-beta-vA.10.08.apk) |
 | **滚动提示器** | `scrollprompter` | 对外 | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
 | **予知影视** | `yuzhi` | 对外 | v1.0.0 (10000) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk) |
@@ -147,19 +147,6 @@ python tools/publish.py \
 
 一条命令会做完：建 Release → 传 APK → 写 `<appId>/version.json` → 更新 `apps.json` → 刷新上面的表格。
 细节和参数见 [docs/发布流程.md](docs/发布流程.md)。
-
-### 发布前的硬闸门（防「包根本装不上」）
-
-`publish.py` 会先把 APK 拆开核三件事，任一不符直接中止：
-
-1. **包内版本**——`AndroidManifest.xml` 里的 versionName/versionCode 必须等于 `--version`。
-   2026-11 的 1.10.07 就是把 1.10.06 的包只改了文件名发出去，客户端永远提示更新、装完还是旧版；
-2. **签名证书**——`META-INF/*.RSA` 的证书 SHA-256 必须是历史那把（musi 两条线都是
-   `073DD441…1CF43909`）。发成本地 debug 包（`CN=Android Debug`）时，已装用户的升级会报
-   「签名不一致 / 版本校验未通过」，系统安装器只会给一句「应用未安装」，看不出所以然；
-3. **加固**——`musi` 对外包必须含 `assets/enclave/bla-attestation-manifest.json`。
-
-这三项不给 `--force` 放行：它们不是内容问题，是这批包发出去客户一台都升不上去。
 
 ---
 
