@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-02T01:42:07Z",
+  "updatedAt": "2026-11-02T02:08:38Z",
   "apps": [
     {
       "appId": "musi",
       "channel": "stable",
       "name": "慕思浏览器",
-      "versionName": "1.10.07",
-      "versionCode": 11007,
-      "publishedAt": "2026-11-02T01:41:20Z",
+      "versionName": "1.10.08",
+      "versionCode": 11008,
+      "publishedAt": "2026-11-02T02:08:38Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "公测版 1.10.07：修复电视端「从搜索进入的影视点开无法播放」。\n1) 搜索出来的条目常落在死源或网页播放页线路上（量子 CDN 已 404），以前会直接黑屏报「播放失败」；\n2) 现在选集加载后对各条线路并发做存活探测，死链与网页线路自动剔除、可用线路排到最前；\n3) 全部线路都失效时明确提示换源，不再反复重试卡住。",
+      "notes": "公测版 1.10.08：修 1.10.07 线路探测的三个边界（不涉及播放器本身）。\n1) 修误报：上一部片线路全死后，再点只有一条线路的片子会被判成「线路已全部失效」，\n   现在每部片进来都重新判定，不再受上一部结果影响；\n2) 只有一条线路的片子也做存活探测，死链不再只能等播放器报错；\n3) 「线路全失效」提示补上「或网络不稳」，弱网误判时不至于让人以为源彻底废了。",
       "size": 2989833,
-      "sha256": "c28a26798cdf77e2785fbe0566977e8a23e9c979b7c0d176b183822a6986cca6",
+      "sha256": "d1fb4b35c8fabfaa702e256541ebbdab408b54fe17863f2f1f6ea804023c598b",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.07/musi-v1.10.07.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.07"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.08/musi-v1.10.08.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.08"
     },
     {
       "appId": "musi-beta",
