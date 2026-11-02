@@ -1,8 +1,8 @@
 {
-  "version": "1.10.06",
-  "code": 11006,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.06",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.06/musi-v1.10.06.apk",
-  "size": 2985737,
-  "notes": "公测版 1.10.06：\n1) 修复电视端详情面板被误判成手机的问题，电视上恢复右侧抽屉；\n2) 修复到期网络时间一次抓偏后永久判到期的问题，新抓到的网络时间直接纠正；\n3) 首启只保留「使用说明」一个弹窗，不再连出遥控器指引浮层。"
+  "version": "1.10.07",
+  "code": 11007,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.07",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.07/musi-v1.10.07.apk",
+  "size": 2986574,
+  "notes": "公测版 1.10.07：\n修复电视端从搜索进入的影视无法播放：\n1) 搜索路径常落在死源/网页播放页线路（量子 CDN 已 404）；\n2) 现在选集加载后对各线路并发存活探测，死链与网页线路自动剔除、活线路排前；\n3) 全部线路失效时明确提示换源，不再黑屏报错。"
 }
