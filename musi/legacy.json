@@ -1,8 +1,8 @@
 {
-  "version": "1.10.07",
-  "code": 11007,
-  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.07",
-  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.07/musi-v1.10.07.apk",
+  "version": "1.10.08",
+  "code": 11008,
+  "page": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.08",
+  "apk": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.08/musi-v1.10.08.apk",
   "size": 2989833,
-  "notes": "公测版 1.10.07：修复电视端「从搜索进入的影视点开无法播放」。\n1) 搜索出来的条目常落在死源或网页播放页线路上（量子 CDN 已 404），以前会直接黑屏报「播放失败」；\n2) 现在选集加载后对各条线路并发做存活探测，死链与网页线路自动剔除、可用线路排到最前；\n3) 全部线路都失效时明确提示换源，不再反复重试卡住。"
+  "notes": "公测版 1.10.08：修 1.10.07 线路探测的三个边界（不涉及播放器本身）。\n1) 修误报：上一部片线路全死后，再点只有一条线路的片子会被判成「线路已全部失效」，\n   现在每部片进来都重新判定，不再受上一部结果影响；\n2) 只有一条线路的片子也做存活探测，死链不再只能等播放器报错；\n3) 「线路全失效」提示补上「或网络不稳」，弱网误判时不至于让人以为源彻底废了。"
 }
