@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-02T13:31:54Z",
+  "updatedAt": "2026-11-02T13:32:45Z",
   "apps": [
     {
       "appId": "musi",
@@ -26,13 +26,13 @@
       "name": "慕思浏览器 内测",
       "versionName": "A.10.10",
       "versionCode": 101010,
-      "publishedAt": "2026-11-02T13:15:18Z",
+      "publishedAt": "2026-11-02T13:32:45Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
       "notes": "1.10.10\n\n1. 「📦 其他仓库」这个 tab 去掉了（客户要求：既然那些源一直在后台帮忙，就不必单独占一格）。\n   源一个没少：合并成一组后台源池，继续参与「全源搜索」和「播放失败自动换源」，\n   行为和 1.10.09 完全一致，只是少了一次点击。\n2. 影视源清单改成远程可替换：清单放在公开分发仓的 musi/sources.json，\n   App 启动时自动读（远程 → 本地缓存 → 内置 11 源，逐级兜底，永远不会是空清单）。\n   以后采集站挂掉或换域名，只改那个文件就行，不用重新发版。\n3. 设置页新增「影视源清单」一行：显示清单来源（远程 / 内置）、源的数量、上次更新时间；\n   点「📦 影视源清单（查看 / 更新）」能看到全部站名和域名，还能当场「🔄 更新清单」。\n   这一行不受授权级别限制 —— 它是诊断信息，出问题时能一眼看清在打哪些站。\n4. 首页两排标签放大：第二行 tab 15→18sp、顶栏按钮 13→15sp（客户反馈电视机上坐远了看不清）。\n   一行 6 个 tab 在 720p 电视上仍摆得下，更窄的屏幕可以左右推。",
-      "size": 2990671,
-      "sha256": "e42eaf5698dd2ad112d25ed7541d3d5cc2f67f755dfa215f1d2da0844e93c4bf",
+      "size": 2990686,
+      "sha256": "b62513e14bf648147412d5a0c89fa3a86e8f0b64a3743a430a78c6f36474c0e5",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
       "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.10/musi-beta-vA.10.10.apk",
