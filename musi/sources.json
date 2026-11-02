@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-02",
+  "note": "慕思影视 · 影视源清单（远程可替换）。App 启动时读这个文件：拉到就覆盖 APK 内置清单，拉不到就用内置那份。采集站失效时只改这里，不用重新发版。数组顺序就是优先级，全源搜索与播放失败换源都从第 1 个开始试。",
+  "groups": [
+    {
+      "name": "📦 其他源",
+      "sources": [
+        { "name": "红牛", "api": "https://www.hongniuzy2.com/api.php/provide/vod/" },
+        { "name": "极速", "api": "https://jszyapi.com/api.php/provide/vod/" },
+        { "name": "量子", "api": "https://cj.lziapi.com/api.php/provide/vod/" },
+        { "name": "非凡", "api": "http://cj.ffzyapi.com/api.php/provide/vod/" },
+        { "name": "光速", "api": "https://api.guangsuapi.com/api.php/provide/vod/" },
+        { "name": "电影天堂", "api": "http://caiji.dyttzyapi.com/api.php/provide/vod" },
+        { "name": "百度", "api": "https://api.apibdzy.com/api.php/provide/vod" },
+        { "name": "暴风", "api": "https://bfzyapi.com/api.php/provide/vod" },
+        { "name": "IK", "api": "https://ikunzyapi.com/api.php/provide/vod/from/ikm3u8/" },
+        { "name": "影视星球", "api": "https://ysxq.cc/api.php/provide/vod/" },
+        { "name": "飞快影视", "api": "https://feikuai.in/api.php/provide/vod/" }
+      ]
+    }
+  ]
+}
