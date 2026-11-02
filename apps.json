@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-02T22:53:46Z",
+  "updatedAt": "2026-11-02T22:54:04Z",
   "apps": [
     {
       "appId": "musi",
@@ -26,13 +26,13 @@
       "name": "慕思浏览器 内测",
       "versionName": "A.10.11",
       "versionCode": 101011,
-      "publishedAt": "2026-11-02T22:42:42Z",
+      "publishedAt": "2026-11-02T22:54:04Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
       "notes": "1.10.11\n\n1. 修一个会「越用越没源」的 bug：以前某个源连续 3 部片播不出来就会被降级，\n   降级后连搜索都不再查它 —— 结果电视上能出结果的源越来越少，最后老是只剩影视星球。\n   现在降级只把它排到队尾，每一轮搜索仍然覆盖全部 11 个源。\n2. 搜索等得更久一点：整轮死线 8 秒 → 12 秒。电视盒子的 DNS + 握手常常就要 3~6 秒，\n   8 秒内一半的源连不上（慢源结果之后仍会补进来，只是先出结论的时机放宽了）。\n3. 播放器针对电视加固：\n   · 打开解码器兜底 —— 盒子的硬件解码器经常「说支持 H.265、一播就崩」，现在会自动换解码器；\n   · 加载失败重试 3 次 → 5 次；\n   · 连接/读取超时 10 秒 → 15/30 秒（播到一半卡一下不再直接判失败）。\n4. 播放失败的提示分两类：解码不了该格式 / 线路连不上，不再都是同一句「播放失败」。\n5. 设置页新增「🔧 播放诊断」：在电视上点一下，会把设备型号、Android 版本、\n   支持的编码（H.264 / H.265 / AV1 的硬解软解）、以及每个源的\n   DNS / 搜索 / 取集 / m3u8 耗时和报错全部打在屏幕上，同时存到 files/diag.txt。\n   电视播不了的时候先跑这个，把结果截图或文件发回来就能定位。",
-      "size": 2994504,
-      "sha256": "dc9ca2c3a32056fe668a92a935d9060f84249e1db50f2f3b1269dd819a069d01",
+      "size": 2994635,
+      "sha256": "14f48e25ebe9cca480ab35b6fd0772edbe34ecc90f623d93742ad68c4ca6ae6d",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
       "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.11/musi-beta-vA.10.11.apk",
