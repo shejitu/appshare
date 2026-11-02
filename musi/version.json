@@ -5,7 +5,7 @@
   "name": "慕思浏览器",
   "versionName": "1.10.11",
   "versionCode": 11011,
-  "publishedAt": "2026-11-02T22:42:24Z",
+  "publishedAt": "2026-11-02T22:53:46Z",
   "mandatory": false,
   "minSdk": 21,
   "packageName": "com.mytv.lite",
@@ -13,7 +13,7 @@
   "apk": {
     "file": "musi-v1.10.11.apk",
     "size": 2998025,
-    "sha256": "c7ac374d4b98309a62685a56fdc1f7ae1c2dc610372d5df83dd8c1a446decbc3",
+    "sha256": "728af75ca09978c802bc1290fe94f56350fe3ee8269a603f3cb87ada382e71ab",
     "url": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.11/musi-v1.10.11.apk",
     "mirrors": [
       "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-v1.10.11/musi-v1.10.11.apk",
