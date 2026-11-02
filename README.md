@@ -15,7 +15,7 @@
 | App | 标识 | 渠道 | 最新版本 | 大小 | 下载 |
 | --- | --- | --- | --- | --- | --- |
 | **慕思浏览器** | `musi` | 对外 | v1.10.10 (11010) | 2.86 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-v1.10.10/musi-v1.10.10.apk) |
-| **慕思浏览器 内测** | `musi-beta` | 内测 | vA.10.09 (101009) | 2.85 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.09/musi-beta-vA.10.09.apk) |
+| **慕思浏览器 内测** | `musi-beta` | 内测 | vA.10.10 (101010) | 2.85 MiB | [下载](https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.10/musi-beta-vA.10.10.apk) |
 | **滚动提示器** | `scrollprompter` | 对外 | v1.8 (9) | 5.80 MiB | [下载](https://github.com/shejitu/appshare/releases/download/scrollprompter-v1.8/scrollprompter-v1.8.apk) |
 | **予知影视** | `yuzhi` | 对外 | v1.0.0 (10000) | 30.68 MiB | [下载](https://github.com/shejitu/appshare/releases/download/yuzhi-v1.0.0/yuzhi-v1.0.0.apk) |
 <!-- APPS:END -->
