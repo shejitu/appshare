@@ -148,6 +148,19 @@ python tools/publish.py \
 一条命令会做完：建 Release → 传 APK → 写 `<appId>/version.json` → 更新 `apps.json` → 刷新上面的表格。
 细节和参数见 [docs/发布流程.md](docs/发布流程.md)。
 
+### 发布前的硬闸门（防「包根本装不上」）
+
+`publish.py` 会先把 APK 拆开核三件事，任一不符直接中止：
+
+1. **包内版本**——`AndroidManifest.xml` 里的 versionName/versionCode 必须等于 `--version`。
+   2026-11 的 1.10.07 就是把 1.10.06 的包只改了文件名发出去，客户端永远提示更新、装完还是旧版；
+2. **签名证书**——`META-INF/*.RSA` 的证书 SHA-256 必须是历史那把（musi 两条线都是
+   `073DD441…1CF43909`）。发成本地 debug 包（`CN=Android Debug`）时，已装用户的升级会报
+   「签名不一致 / 版本校验未通过」，系统安装器只会给一句「应用未安装」，看不出所以然；
+3. **加固**——`musi` 对外包必须含 `assets/enclave/bla-attestation-manifest.json`。
+
+这三项不给 `--force` 放行：它们不是内容问题，是这批包发出去客户一台都升不上去。
+
 ---
 
 ## 版本号规则：1.x 对外，A.x 内测

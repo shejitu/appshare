@@ -39,7 +39,6 @@ import hashlib
 import json
 import mimetypes
 import os
-import re
 import struct
 import sys
 import time
@@ -407,38 +406,130 @@ def sanity_check_apk(path):
 
 
 # --------------------------------------------------------------------------
-# 版本号规则
-#   1.0.0 起步；小改动 +0.0.1；中等改动 +0.1.0（patch 归零）；大改版 +1.0.0（minor/patch 归零）
-#   versionCode = major*10000 + minor*100 + patch
-#     1.0.0 -> 10000   1.0.1 -> 10001   1.1.0 -> 10100   2.0.0 -> 20000
+# 签名证书闸门
+#   覆盖安装的前提是「证书完全一致」。发错包（比如本地用 debug keystore
+#   随手编的包）时，apksigner/系统都会认为签名合法，只有老设备升级那一刻
+#   才会报「签名不一致 / 版本校验未通过」，而且普通用户根本无从判断。
+#   2026-11 的 1.10.07 就踩过：发布上去的是本地 debug 包，包内版本还是
+#   1.10.06，老用户既收不到更新，手动装又装不上。
 # --------------------------------------------------------------------------
-CHANNEL_BY_MAJOR = {1: "stable", 9: "beta", 10: "beta"}
+KNOWN_CERTS = {
+    # 慕思浏览器两条线必须同一把正式证书（MyTV）
+    "musi": "073DD4416CFDE180DBC6D8661FF33E680E1559FC4291BA32F961D3791CF43909",
+    "musi-beta": "073DD4416CFDE180DBC6D8661FF33E680E1559FC4291BA32F961D3791CF43909",
+}
+
+
+def apk_cert_sha256(path):
+    """取 APK 里 v1 签名块的证书 SHA-256（大写无冒号）。取不到返回 None。
+
+    APK 的 META-INF/*.RSA 是 PKCS#7 SignedData，用 openssl 解出第一张证书
+    再做指纹 —— 不依赖 Java / Android SDK，CI 和本机都能跑。
+    """
+    import subprocess
+    import tempfile
+
+    with zipfile.ZipFile(path) as z:
+        cand = [n for n in z.namelist()
+                if n.startswith("META-INF/") and n.upper().endswith((".RSA", ".DSA", ".EC"))]
+        if not cand:
+            return None
+        cand.sort(key=lambda n: z.getinfo(n).file_size, reverse=True)
+        blob = z.read(cand[0])
+
+    tmpdir = tempfile.mkdtemp(prefix="apkcert_")
+    p7 = os.path.join(tmpdir, "sig.p7b")
+    pem = os.path.join(tmpdir, "cert.pem")
+    with open(p7, "wb") as fh:
+        fh.write(blob)
+    try:
+        with open(pem, "wb") as out:
+            subprocess.run(["openssl", "pkcs7", "-inform", "DER", "-in", p7,
+                            "-print_certs", "-out", pem],
+                           check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        r = subprocess.run(["openssl", "x509", "-in", pem, "-noout", "-fingerprint", "-sha256"],
+                           check=True, capture_output=True)
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    text = r.stdout.decode("utf-8", "replace")
+    for line in text.splitlines():
+        if "Fingerprint=" in line:
+            fp = line.split("Fingerprint=", 1)[1].strip()
+            fp = fp.replace(":", "").strip().upper()
+            if len(fp) == 64:
+                return fp
+    return None
+
+
+def check_certificate(path, expect):
+    """证书与历史不一致时直接拒绝 —— 这不是可以 --force 放行的东西。"""
+    got = apk_cert_sha256(path)
+    if got is None:
+        raise SystemExit(
+            "无法读取 APK 签名证书（openssl 不可用或包未签名）：%s\n"
+            "未签名的包发出去，客户一台都装不上。" % path)
+    if got != expect.upper():
+        raise SystemExit(
+            "签名证书与历史不一致，已拒绝发布：\n"
+            "  这个包: %s\n"
+            "  应为  : %s\n"
+            "证书一变，已装旧版的用户升级会报「签名不一致 / 安装失败」，\n"
+            "必须用同一把正式 keystore 重新签名后再发（debug 包不行）。" % (got, expect))
+
+
+# --------------------------------------------------------------------------
+# 版本号规则
+#   对外（stable）：1.0.0 起步；小改 +0.0.1；中等改 +0.1.0（patch 归零）；大改 +1.0.0（minor/patch 归零）
+#   内测（beta）  ：A.0.0 起步，规则同上，A 只是渠道前缀，不参与大小比较
+#   versionCode = major*10000 + minor*100 + patch，其中 A 记作 major=10
+#     1.0.0 -> 10000   1.0.1 -> 10001   1.1.0 -> 10100
+#     A.0.0 -> 100000  A.1.0 -> 100100  A.1.1 -> 100101
+#   两条线互不干扰：内测包 code 恒大于对外包，所以「对外的装上去，再装内测」可以覆盖，
+#   反过来「内测换对外」会被系统判为降级，必须先卸载。
+# --------------------------------------------------------------------------
+BETA_MAJOR = 10          # A.x.x 在 versionCode 里的数值
+CHANNEL_BY_MAJOR = {1: "stable", BETA_MAJOR: "beta"}
 
 
 def parse_version(text):
     """X.Y.Z（三段）或 X.Y（两段，老项目）都接受，统一成三段。
-    A.Y.Z（内测线，如 A.5.0）也接受：A 在 versionCode 里记作 10，
-    所以 A.5.0 = 100500，恒大于对外线的 1xxxx。
-    注意：用纯字符串解析，不用 re —— 本机某些 Python 的 re 行为异常。"""
-    s = str(text).strip()
-    beta = s[:1] in ("A", "a")
-    if beta:
-        s = s[1:]
-        if s[:1] == ".":
-            s = s[1:]
-    parts = s.split(".")
-    if len(parts) not in (2, 3) or not all(x.isdigit() for x in parts):
-        raise SystemExit("版本号要写成 X.Y.Z 或 A.Y.Z，例如 1.0.0 / A.5.0（收到：%s）" % text)
-    nums = [int(x) for x in parts]
-    if beta:
-        nums.insert(0, 10)
-    while len(nums) < 3:
+
+    首段可以是数字，也可以是字母 A —— A 就是内测线，内部按 major=10 参与换算。
+    """
+    parts = [p.strip() for p in str(text).strip().split(".")]
+    if len(parts) not in (2, 3) or not parts[0]:
+        raise SystemExit("版本号要写成 X.Y.Z 或 A.Y.Z，例如 1.0.0 / A.1.0（收到：%s）" % text)
+
+    head = parts[0].upper()
+    if head == "A":
+        major = BETA_MAJOR
+    elif head.isdigit():
+        major = int(head)
+        if major == BETA_MAJOR:
+            raise SystemExit("首段 10 已被内测线 A 占用，内测请直接写 A.x.y（收到：%s）" % text)
+    else:
+        raise SystemExit("版本号首段只能是数字或字母 A，例如 1.2.1 / A.1.0（收到：%s）" % text)
+
+    rest = parts[1:]
+    if not all(p.isdigit() for p in rest):
+        raise SystemExit("版本号 A 后面的段必须是数字，例如 A.1.0（收到：%s）" % text)
+
+    nums = [int(p) for p in rest]
+    while len(nums) < 2:
         nums.append(0)
-    return tuple(nums[:3])
+    return (major, nums[0], nums[1])
+
+
+def format_version(v):
+    """把内部三元组还原成给人看的 versionName（A 线要还原成字母）。"""
+    major, minor, patch = v
+    if major == BETA_MAJOR:
+        return "A.%d.%d" % (minor, patch)
+    return "%d.%d.%d" % (major, minor, patch)
 
 
 def channel_of(v):
-    """1 开头 = 对外正式版，9 开头 = 自己内测用。"""
+    """1 开头 = 对外正式版，A 开头 = 自己内测用。"""
     return CHANNEL_BY_MAJOR.get(v[0], "other")
 
 
@@ -455,6 +546,10 @@ def bump_version(v, kind):
     elif kind == "medium":
         minor, patch = minor + 1, 0
     elif kind == "major":
+        if major == BETA_MAJOR:
+            raise SystemExit(
+                "内测线（A.x）没有大版本 —— A 只是渠道前缀，不参与大改版递增。\n"
+                "对外做大改版时，内测用 --version A.<对外 minor>.0 手工跟上即可（例如 A.2.0）。")
         major, minor, patch = major + 1, 0, 0
     else:
         raise SystemExit("--bump 只能是 small / medium / major")
@@ -522,6 +617,10 @@ def main():
     p.add_argument("--token-file", default=DEFAULT_TOKEN_FILE)
     p.add_argument("--dry-run", action="store_true", help="只打印，不写远端")
     p.add_argument("--force", action="store_true", help="APK 内版本与参数不一致时仍然发布（一般别用）")
+    p.add_argument("--expect-cert",
+                   help="期望的签名证书 SHA-256（大写，可带冒号）；默认按 appId 查 KNOWN_CERTS")
+    p.add_argument("--allow-unshielded", action="store_true",
+                   help="允许发布未加固的对外包（musi 默认要求有 BLA 清单）")
     p.add_argument("--list", action="store_true", help="列出仓库里已有的 app")
     args = p.parse_args()
 
@@ -545,12 +644,12 @@ def main():
             raise SystemExit("仓库里还没有 %s 的版本记录，首次请用 --version 1.0.0" % args.app_id)
         if channel_of(cur) == "other":
             raise SystemExit(
-                "当前记录是遗留版本号 %d.%d.%d，已作废，不能在这上面递增。\n"
-                "首次请显式指定：--version 1.0.0（对外）或 --version 9.0.0（内测）。"
-                % (cur[0], cur[1], cur[2]))
+                "当前记录是遗留版本号 %s，已作废，不能在这上面递增。\n"
+                "首次请显式指定：--version 1.0.0（对外）或 --version A.0.0（内测）。"
+                % format_version(cur))
         new = bump_version(cur, args.bump)
-        args.version = "%d.%d.%d" % new
-        print("版本递增（%s）：%d.%d.%d → %s" % (args.bump, cur[0], cur[1], cur[2], args.version))
+        args.version = format_version(new)
+        print("版本递增（%s）：%s → %s" % (args.bump, format_version(cur), args.version))
     if args.version and not args.version_code:
         if len(str(args.version).split(".")) == 3:
             args.version_code = str(version_code_for(parse_version(args.version)))
@@ -564,16 +663,16 @@ def main():
     for field in ("app_id", "name", "version", "version_code", "apk"):
         if not getattr(args, field):
             raise SystemExit("缺少参数 --%s" % field.replace("_", "-"))
-    # 渠道与 appId 必须一致：9 开头的内测版不许发到对外通道，反之亦然
+    # 渠道与 appId 必须一致：A 开头的内测版不许发到对外通道，反之亦然
     ch = channel_of(parse_version(args.version))
     if ch == "beta" and not str(args.app_id).endswith("-beta"):
-        print("\n这是 9.x 内测版，但 appId 是 %s。" % args.app_id)
+        print("\n这是 A.x 内测版，但 appId 是 %s。" % args.app_id)
         print("内测请用对应通道：--app-id %s-beta" % args.app_id)
         raise SystemExit("已中止：内测版不能进对外通道，否则所有客户都会被提示升级。")
     if ch == "stable" and str(args.app_id).endswith("-beta"):
-        raise SystemExit("已中止：%-beta 通道只能发 9.x 内测版（收到 %s）。" % (args.version))
+        raise SystemExit("已中止：%-beta 通道只能发 A.x 内测版（收到 %s）。" % (args.version))
     if ch == "other":
-        print("  ! 版本号 %s 既不是 1.x（对外）也不是 9.x（内测），渠道记为 other" % args.version)
+        print("  ! 版本号 %s 既不是 1.x（对外）也不是 A.x（内测），渠道记为 other" % args.version)
     if not str(args.app_id).replace("-", "").isalnum() or str(args.app_id).lower() != args.app_id:
         raise SystemExit("--app-id 只能用 a-z0-9-_，且必须小写")
     if args.notes_file:
@@ -583,6 +682,26 @@ def main():
 
     sanity_check_apk(args.apk)
     pkg, apk_vname, apk_vcode, _ = read_apk_manifest(args.apk)
+
+    # 签名闸门：证书必须与历史一致，否则老用户装不上（跳过 --force 也不行）
+    expect_cert = args.expect_cert or KNOWN_CERTS.get(args.app_id)
+    if expect_cert:
+        check_certificate(args.apk, expect_cert.replace(":", ""))
+        print("  证书  : 与历史一致（%s…）" % expect_cert.replace(":", "")[:16])
+    else:
+        print("  ! 没配置 %s 的期望证书，跳过签名校验" % args.app_id)
+
+    # 对外版必须是加固过的包：没加固的包发出去等于把源码逻辑裸奔
+    if args.app_id == "musi" and not args.allow_unshielded:
+        with zipfile.ZipFile(args.apk) as z:
+            shielded = "assets/enclave/bla-attestation-manifest.json" in z.namelist()
+        if not shielded:
+            raise SystemExit(
+                "这个 APK 里没有 BLA 加固清单，是未加固的包。\n"
+                "对外版必须是「编译 → BLA 加固 → 重签」的产物；\n"
+                "确认要发裸包请加 --allow-unshielded（一般不该这么做）。")
+        print("  加固  : BLA 清单存在")
+
     problems = []
     if str(apk_vname) != str(args.version):
         problems.append("versionName：包内是 %s，元数据要写 %s" % (apk_vname, args.version))
