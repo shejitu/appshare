@@ -3,22 +3,22 @@
   "appId": "musi-beta",
   "channel": "beta",
   "name": "慕思浏览器 内测",
-  "versionName": "A.10.09",
-  "versionCode": 101009,
-  "publishedAt": "2026-11-02T12:13:27Z",
+  "versionName": "A.10.10",
+  "versionCode": 101010,
+  "publishedAt": "2026-11-02T13:15:18Z",
   "mandatory": false,
-  "minSdk": null,
+  "minSdk": 21,
   "packageName": "com.mytv.lite",
-  "notes": "1.10.09\n\n1. 搜索改「并源归并」：同一部片只出一张卡，多个源都留着，卡片上标「N 源」；\n   主力源按优先级（红牛→极速→量子→…）自动选，不再是谁先返回谁独占整屏。\n2. 选集页新增「片源」一行，遥控器左右选、OK 直接换源；某个源只有 2 集这种残缺条目也能一键换走。\n3. 播放失败自动跨源重试：同源线路都播不了时，自动去下一个源取同一集接着播，进度不丢。\n4. 源健康度改成「连续 3 部不同的片都播不出来」才降级（30 分钟 / 24 小时 / 7 天）；\n   搜不到某部片不再算源挂了，一部片失败也不会把源判死。\n5. 版本更新下载加国内镜像兜底（直连 GitHub 不通时自动换 ghproxy / gh-proxy / ghfast），\n   并拦截「内测包 ↔ 对外包」的降级安装，提示写清原因。",
+  "notes": "1.10.10\n\n1. 「📦 其他仓库」这个 tab 去掉了（客户要求：既然那些源一直在后台帮忙，就不必单独占一格）。\n   源一个没少：合并成一组后台源池，继续参与「全源搜索」和「播放失败自动换源」，\n   行为和 1.10.09 完全一致，只是少了一次点击。\n2. 影视源清单改成远程可替换：清单放在公开分发仓的 musi/sources.json，\n   App 启动时自动读（远程 → 本地缓存 → 内置 11 源，逐级兜底，永远不会是空清单）。\n   以后采集站挂掉或换域名，只改那个文件就行，不用重新发版。\n3. 设置页新增「影视源清单」一行：显示清单来源（远程 / 内置）、源的数量、上次更新时间；\n   点「📦 影视源清单（查看 / 更新）」能看到全部站名和域名，还能当场「🔄 更新清单」。\n   这一行不受授权级别限制 —— 它是诊断信息，出问题时能一眼看清在打哪些站。\n4. 首页两排标签放大：第二行 tab 15→18sp、顶栏按钮 13→15sp（客户反馈电视机上坐远了看不清）。\n   一行 6 个 tab 在 720p 电视上仍摆得下，更窄的屏幕可以左右推。",
   "apk": {
-    "file": "musi-beta-vA.10.09.apk",
-    "size": 2989824,
-    "sha256": "3f2cc27319f22c5f943880a486fa2c117e5939a38d1cdf83798d956ca15bf30e",
-    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.09/musi-beta-vA.10.09.apk",
+    "file": "musi-beta-vA.10.10.apk",
+    "size": 2990671,
+    "sha256": "e42eaf5698dd2ad112d25ed7541d3d5cc2f67f755dfa215f1d2da0844e93c4bf",
+    "url": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.10/musi-beta-vA.10.10.apk",
     "mirrors": [
-      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.09/musi-beta-vA.10.09.apk",
-      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.09/musi-beta-vA.10.09.apk",
-      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.09/musi-beta-vA.10.09.apk"
+      "https://ghproxy.net/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.10/musi-beta-vA.10.10.apk",
+      "https://gh-proxy.com/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.10/musi-beta-vA.10.10.apk",
+      "https://ghfast.top/https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.10/musi-beta-vA.10.10.apk"
     ]
   }
 }
