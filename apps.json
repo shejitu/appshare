@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-02T01:41:20Z",
+  "updatedAt": "2026-11-02T01:42:07Z",
   "apps": [
     {
       "appId": "musi",
@@ -24,19 +24,19 @@
       "appId": "musi-beta",
       "channel": "beta",
       "name": "慕思浏览器内测",
-      "versionName": "A.10.06",
-      "versionCode": 101006,
-      "publishedAt": "2026-11-01T13:16:54Z",
+      "versionName": "A.10.07",
+      "versionCode": 101007,
+      "publishedAt": "2026-11-02T01:42:07Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "内测 A.10.06（同源码、不加固）：\n· 详情面板电视判据修复，电视上恢复右侧抽屉；\n· 到期网络时间纠偏；\n· 首启只留「使用说明」一个弹窗；\n· 其余同对外版 1.10.06。",
-      "size": 2985970,
-      "sha256": "626fa30f1efbd3015a1cf4e3172c55bd239b0ed4f77569a41aaa746b37449a30",
+      "notes": "内测 A.10.07（同源码、不加固）：\n· 搜索进入的影视点开无法播放已修复：线路并发存活探测，死链/网页线路剔除并排后；\n· 全线路失效时明确提示换源；\n· 其余同对外版 1.10.07。",
+      "size": 2986643,
+      "sha256": "5774581e28d7e1c395be5c033830161a8ab8f06e809e9d9278fd910b7dd46020",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi-beta/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi-beta/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.06/musi-beta-vA.10.06.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.06"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-beta-vA.10.07/musi-beta-vA.10.07.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-beta-vA.10.07"
     },
     {
       "appId": "scrollprompter",
