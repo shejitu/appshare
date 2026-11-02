@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-02T02:09:36Z",
+  "updatedAt": "2026-11-02T12:13:03Z",
   "apps": [
     {
       "appId": "musi",
       "channel": "stable",
       "name": "慕思浏览器",
-      "versionName": "1.10.08",
-      "versionCode": 11008,
-      "publishedAt": "2026-11-02T02:08:38Z",
+      "versionName": "1.10.09",
+      "versionCode": 11009,
+      "publishedAt": "2026-11-02T12:13:03Z",
       "mandatory": false,
-      "minSdk": 21,
+      "minSdk": null,
       "packageName": "com.mytv.lite",
-      "notes": "公测版 1.10.08：修 1.10.07 线路探测的三个边界（不涉及播放器本身）。\n1) 修误报：上一部片线路全死后，再点只有一条线路的片子会被判成「线路已全部失效」，\n   现在每部片进来都重新判定，不再受上一部结果影响；\n2) 只有一条线路的片子也做存活探测，死链不再只能等播放器报错；\n3) 「线路全失效」提示补上「或网络不稳」，弱网误判时不至于让人以为源彻底废了。",
+      "notes": "1.10.09\n\n1. 搜索改「并源归并」：同一部片只出一张卡，多个源都留着，卡片上标「N 源」；\n   主力源按优先级（红牛→极速→量子→…）自动选，不再是谁先返回谁独占整屏。\n2. 选集页新增「片源」一行，遥控器左右选、OK 直接换源；某个源只有 2 集这种残缺条目也能一键换走。\n3. 播放失败自动跨源重试：同源线路都播不了时，自动去下一个源取同一集接着播，进度不丢。\n4. 源健康度改成「连续 3 部不同的片都播不出来」才降级（30 分钟 / 24 小时 / 7 天）；\n   搜不到某部片不再算源挂了，一部片失败也不会把源判死。\n5. 版本更新下载加国内镜像兜底（直连 GitHub 不通时自动换 ghproxy / gh-proxy / ghfast），\n   并拦截「内测包 ↔ 对外包」的降级安装，提示写清原因。",
       "size": 2989833,
-      "sha256": "d1fb4b35c8fabfaa702e256541ebbdab408b54fe17863f2f1f6ea804023c598b",
+      "sha256": "be1377923571ce91f97babd055ee2fd0b27e404bd5f39a5cf6a9cbaf8e512787",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.08/musi-v1.10.08.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.08"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.09/musi-v1.10.09.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.09"
     },
     {
       "appId": "musi-beta",
