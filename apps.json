@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-02T23:20:03Z",
+  "updatedAt": "2026-11-10T11:19:39Z",
   "apps": [
     {
       "appId": "musi",
       "channel": "stable",
       "name": "慕思浏览器",
-      "versionName": "1.10.12",
-      "versionCode": 11012,
-      "publishedAt": "2026-11-02T23:19:44Z",
+      "versionName": "1.10.13",
+      "versionCode": 11013,
+      "publishedAt": "2026-11-10T11:19:39Z",
       "mandatory": false,
       "minSdk": 21,
       "packageName": "com.mytv.lite",
-      "notes": "1.10.12 —— 第一次正式代码审查 + 修复\n\n这一版不加功能，全部是「把地基补平」。起因是代码质量参差不齐，\n于是先立了审查机制（CODE_REVIEW.md），再把全部 34 个类过了一遍，\n结论写在 REVIEW-2026-11-03.md：没有 P0，P1 三条、P2 七条、P3 两条。\n\n【最重要的一条：失败终于查得到了】\n\n之前 release 包里一行日志都没有。proguard-rules.pro 里有\n-assumenosideeffects class android.util.Log { v,d,i,w,e,wtf }，\nR8 会把这些调用整段删掉；客户装的正是 release 包，电视盒子又没有 logcat。\n所以「电视端播不了」这个 bug 拖了几版都只能靠客户口头描述。\n\n现在：\n- 新增落地日志 files/app.log（滚动保留最后 64KB），只记失败和关键动作；\n- 播放失败会记下：错误码 / 第几集 / 哪个源 / 主机名（只记主机名，不记完整直链，\n  因为直链里常带签名 token）；\n- 设置 → 🔧 播放诊断，末尾会附「最近日志」，客户截一张图就能还原现场。\n\n【修掉的问题】\n\nP1\n- 下载安装包从来没有校验过 sha256。version.json 从 1.5.0 起就带这个字段，\n  分发仓 README 也写着「客户端下载后校验」，但客户端根本没读过。\n  下载还会回退到三个第三方镜像，链路上任何一跳给错包，用户只看到「装不上」。\n  现在下载完算 SHA-256 比对，不一致就删包并说清原因；远端没给 sha256 时退化为比大小。\n- 1.10.11 加的「证书失败换 http 重试」范围过宽，403/404 也会白打一遍，\n  电视上表现为「搜索越来越慢」。现在只对证书/域名解析/连接/超时类错误重试。\n- SourceBook 的分组字段跨线程读写没加 volatile，可能出现\n  「设置里说清单已更新，首页还是老源，重启才好」这种查不出的问题。\n\nP2\n- 播放诊断跑完不回收线程，一次诊断能攒十几个线程，电视内存本来就紧；\n- 海报缓存可能被并发初始化成两份，表现为「海报忽有忽无」；\n- 更新判定用版本名字符串比较，内测包会被误提示降级；\n- 三处关键静默 catch 补上日志。\n\nP3\n- 搜索时的正则每次调用都重新编译（一轮 660 次）；\n- 诊断页一段算了一半的死代码。\n\n【验证方法】\n\n装好后到 设置 → 🔧 播放诊断 跑一遍，把结果截图发我。\n如果电视上还是播不了，这次的日志能直接告诉我们是「解码器不认」、\n「证书握手失败」还是「线路不通」——不用再猜了。\n\n【版本】\n\n1.10.12（11012） / 内测 A.10.12（101012）",
-      "size": 2998025,
-      "sha256": "84e1a07c4f25c355dfede8ab6eade7f9ebb5786a07ff6d023121e553046d3b1f",
+      "notes": "1.10.13 —— 播放器倍速锁定 + 详情高清背景 + 启动等待页 + 并入 9 个影视仓\n\n\n长按快进/快退加速是 1.9.0 就有的（2 秒起 3 倍速、再按 3 秒升 5 倍速、松手即停）。这版补上两块：\n- 快进时左右拖动切 3/5 倍速档，下滑锁定当前倍速，松手后继续加速；\n- 顶部常显「🔒 3/5 倍速 点这里解除」浮层，点浮层、按返回、暂停、切集都能解除。倒退不锁定。\n\n\n详情面板背后加了一层大图海报加暗色遮罩，海报拿不到就回落到原来的纯深色，不空白不闪烁。\n\n\n启动先盖一层近黑等待页，主海报墙首批海报出来就撤，8 秒超时必撤，不会困住。\n\n\n仓库里新增：摸鱼儿、影仓、小盒子4K、创享影视、老刘备、小马、小盒子单仓、拾光多仓、挺好分享多仓。另有 4 个实测不可用（饭太硬、王二小、肥猫根地址、嗷呜）未并入；伦理接口因内容规则未并入。拾光多仓文件尾部带一段 HTML，若实机上该仓打不开属该仓本身格式问题，不影响其他仓。\n\n\n老电视「除红牛外播不了」的原因是证书握手失败，修复（https 失败自动换 http 重试一次）已在 1.10.11 落地、1.10.12 收紧，本版未动。装好后请到 设置 → 🔧 播放诊断 跑一遍，确认还报不报 SSLHandshakeException。\n\n\n1.10.13（11013）/ 内测 A.10.13（101013）",
+      "size": 3002121,
+      "sha256": "ef1c2c807de7dcdd5cdf4f70dea34172645f773a014a1d9f10fea814975a6d2a",
       "checkUrl": "https://raw.githubusercontent.com/shejitu/appshare/main/musi/version.json",
       "checkUrlMirror": "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/musi/version.json",
-      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.12/musi-v1.10.12.apk",
-      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.12"
+      "apkUrl": "https://github.com/shejitu/appshare/releases/download/musi-v1.10.13/musi-v1.10.13.apk",
+      "pageUrl": "https://github.com/shejitu/appshare/releases/tag/musi-v1.10.13"
     },
     {
       "appId": "musi-beta",
