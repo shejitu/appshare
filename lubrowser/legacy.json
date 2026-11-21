@@ -1,9 +1,9 @@
 {
-  "version": "0.3.15",
-  "code": 22,
+  "version": "0.3.16",
+  "code": 23,
   "page": "https://github.com/shejitu/appshare/tree/main/lubrowser",
-  "apk": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.15-release.apk",
-  "size": 3961570,
-  "sha256": "7ff0ac73c273f98d252f10c7045b2670e5897b855661bd8c1752871cbbe37c35",
-  "notes": "0.3.15 更新\n- 首页改版：影视预览窗置顶、五入口贴底、LOGO 恢复。\n- 默认书签：抖音精选、茶杯狐（首次启动写入）。\n- 影视搜索同名多站命中时可选站播放。\n- 历史列表收紧，删除符号缩小。\n- 豆瓣海报加 Referer（待真机验证）。\n- 竖屏画中画按实际视频比例；关画中画后暂停并恢复播放页（待真机验证）。"
+  "apk": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.16-release.apk",
+  "size": 3966546,
+  "sha256": "6bfe482809631cdd295e3cf0a597cb5ac672f018db4a64bb8df2f3bcfd6db112",
+  "notes": "0.3.16 更新\n- 新轻站：努努影院（详情页读选集、逐集取流、按来源分线路）、麦田影院（MacCMS 列表/详情/线路分组/播放地址；搜索待真机验证）。\n- 菜单第一页加“刷新”。\n- 底部栏最左加新建空白页面按钮，标签切换按钮不变。\n- 努努/麦田完整播放链路待真机验证。"
 }
