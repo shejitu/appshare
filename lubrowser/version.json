@@ -4,7 +4,7 @@
   "channel": "stable",
   "name": "卢浏览器",
   "versionName": "0.3.17",
-  "versionCode": 23,
+  "versionCode": 24,
   "publishedAt": "2026-11-21T10:25:00Z",
   "mandatory": false,
   "minSdk": 24,
