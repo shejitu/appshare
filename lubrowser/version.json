@@ -3,20 +3,20 @@
   "appId": "lubrowser",
   "channel": "stable",
   "name": "卢浏览器",
-  "versionName": "0.3.16",
+  "versionName": "0.3.17",
   "versionCode": 23,
-  "publishedAt": "2026-11-21T09:35:00Z",
+  "publishedAt": "2026-11-21T10:25:00Z",
   "mandatory": false,
   "minSdk": 24,
   "packageName": "com.lubrowser",
-  "notes": "0.3.16 更新\n- 新轻站：努努影院（详情页读选集、逐集取流、按来源分线路）、麦田影院（MacCMS 列表/详情/线路分组/播放地址；搜索待真机验证）。\n- 菜单第一页加“刷新”。\n- 底部栏最左加新建空白页面按钮，标签切换按钮不变。\n- 努努/麦田完整播放链路待真机验证。",
+  "notes": "0.3.17 更新\n- 移除加载失败的努努、麦田两个轻站。\n- 豆瓣主页改高分榜（新接口参数待真机验证）。\n- 底部栏最左改为带文字的“新增页面”按钮；标签列表项同步改名。\n- 菜单第 1 页第 1 个仍是“刷新”。",
   "apk": {
-    "file": "LuBrowser-0.3.16-release.apk",
-    "size": 3966546,
-    "sha256": "6bfe482809631cdd295e3cf0a597cb5ac672f018db4a64bb8df2f3bcfd6db112",
-    "url": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.16-release.apk",
+    "file": "LuBrowser-0.3.17-release.apk",
+    "size": 3963857,
+    "sha256": "4b0189670212236ebda94f7d65475801345d1283dbdd063a3f0ee877d6023fab",
+    "url": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.17-release.apk",
     "mirrors": [
-      "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/lubrowser/LuBrowser-0.3.16-release.apk"
+      "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/lubrowser/LuBrowser-0.3.17-release.apk"
     ]
   }
 }

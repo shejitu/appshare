@@ -1,2 +1,2 @@
-54f1625980a4a56e27d0ae9c3c768523ee07c294b3b6a11a20c31df9fbae264d  LuBrowser-0.3.16-debug.apk
-6bfe482809631cdd295e3cf0a597cb5ac672f018db4a64bb8df2f3bcfd6db112  LuBrowser-0.3.16-release.apk
+c34c551ee0fe507f2acdd42f76c441d47b0ee0bbcba5f925a34e042445b669b0  LuBrowser-0.3.17-debug.apk
+4b0189670212236ebda94f7d65475801345d1283dbdd063a3f0ee877d6023fab  LuBrowser-0.3.17-release.apk
