@@ -3,20 +3,20 @@
   "appId": "lubrowser",
   "channel": "stable",
   "name": "卢浏览器",
-  "versionName": "0.3.14",
-  "versionCode": 21,
-  "publishedAt": "2026-11-21T08:16:07Z",
+  "versionName": "0.3.15",
+  "versionCode": 22,
+  "publishedAt": "2026-11-21T08:57:37Z",
   "mandatory": false,
   "minSdk": 24,
   "packageName": "com.lubrowser",
-  "notes": "0.3.14 更新\n- 阅读模式基础版：正文抽取（去导航/广告/评论）+ 干净排版，字号两档可调，文字可选中。",
+  "notes": "0.3.15 更新\n- 首页改版：影视预览窗置顶、五入口贴底、LOGO 恢复。\n- 默认书签：抖音精选、茶杯狐（首次启动写入）。\n- 影视搜索同名多站命中时可选站播放。\n- 历史列表收紧，删除符号缩小。\n- 豆瓣海报加 Referer（待真机验证）。\n- 竖屏画中画按实际视频比例；关画中画后暂停并恢复播放页（待真机验证）。",
   "apk": {
-    "file": "LuBrowser-0.3.14-release.apk",
-    "size": 3955927,
-    "sha256": "81127c394890fb1f4c6c1686f237545e3e3508617b75428159a45c0941d265db",
-    "url": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.14-release.apk",
+    "file": "LuBrowser-0.3.15-release.apk",
+    "size": 3961570,
+    "sha256": "7ff0ac73c273f98d252f10c7045b2670e5897b855661bd8c1752871cbbe37c35",
+    "url": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.15-release.apk",
     "mirrors": [
-      "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/lubrowser/LuBrowser-0.3.14-release.apk"
+      "https://cdn.jsdelivr.net/gh/shejitu/appshare@main/lubrowser/LuBrowser-0.3.15-release.apk"
     ]
   }
 }
