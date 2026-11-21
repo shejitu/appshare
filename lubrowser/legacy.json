@@ -1,9 +1,9 @@
 {
-  "version": "0.3.13",
-  "code": 20,
+  "version": "0.3.14",
+  "code": 21,
   "page": "https://github.com/shejitu/appshare/tree/main/lubrowser",
-  "apk": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.13-release.apk",
-  "size": 3953634,
-  "sha256": "62994ef52b464aa43c43db6bea7bf21aa771dfdfb7482f75503e4797040dab68",
-  "notes": "0.3.13 更新\n- 播放页接通画中画：点按钮进画中画，切后台自动进，退出后控制条恢复。\n- 底部栏加回主页按钮，三点菜单里的设置入口改名“设置”移到第 1 页。\n- 选源和“暂时无片源”弹窗改成贴底。\n- 历史里加搜索，标题网址都能搜；列表排密一点。\n- 页面加边缘手势：左边缘右滑退回、右边缘左滑前进。\n- 白底灰字加深，看得清了。\n- 设置里加换背景皮肤：默认、白色、暖纸色、深色。"
+  "apk": "https://raw.githubusercontent.com/shejitu/appshare/main/lubrowser/LuBrowser-0.3.14-release.apk",
+  "size": 3955927,
+  "sha256": "81127c394890fb1f4c6c1686f237545e3e3508617b75428159a45c0941d265db",
+  "notes": "0.3.14 更新\n- 阅读模式基础版：正文抽取（去导航/广告/评论）+ 干净排版，字号两档可调，文字可选中。"
 }
